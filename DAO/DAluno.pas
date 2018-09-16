@@ -236,7 +236,7 @@ begin
     except
       on E: Exception do
       begin
-
+        //mensagem
         ShowMessage('Erro ao cadastrar Aluno : ' + E.Message);
 
       end;
