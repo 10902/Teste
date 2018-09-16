@@ -1,0 +1,466 @@
+unit DProfessor;
+
+interface
+
+Uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.ExtCtrls, Data.DB,
+  jpeg, Vcl.StdCtrls,
+  Uprofessor, Vcl.DBGrids;
+
+type
+
+  TDprofessor = class(TObject)
+  private
+    { private declarations }
+  protected
+    { protected declarations }
+  public
+    { public declarations }
+    function CadastraProfessor(p: TProfessor): boolean;
+
+    function VinculaDisciplinas(p: TProfessor; disciplina: integer): boolean;
+    function AlteraProfessor(p: TProfessor): boolean;
+    procedure Listarprofessor(lista: TListView);
+    function Ativar_inativarProfessor(p: TProfessor): boolean;
+    procedure ListarDisciplinas(lista: TListView);
+
+  published
+    { published declarations }
+  end;
+
+implementation
+
+{ TprofessorDAO }
+
+uses DATA_MODULE;
+
+{ TDprofessor }
+
+function TDprofessor.AlteraProfessor(p: TProfessor): boolean;
+var
+  DT: TDM;
+
+begin
+  Result := false;
+
+  TRY
+    DT := TDM.Create(nil);
+    try
+      begin
+
+        DT.TFconexao.Connected := TRUE;
+
+        DT.Sql_professor.Close;
+        DT.Sql_professor.SQL.Clear;
+
+        DT.Sql_professor.SQL.Add
+          ('update tb_professores set nome=:nome,idade=:idade,sexo=:sexo,cpf=:cpf,cidade=:cidade,bairro=:bairro,endereco=:endereco,cep=:cep,uf=:uf,numero=:numero,');
+        DT.Sql_professor.SQL.Add
+          ('telefone=:telefone,email=:email,dt_cadastro=:dt_cadastro,dt_atualizacao=:dt_atualizacao,user_atualizacao=:user_atualizacao where id=:id');
+        DT.Sql_professor.ParamByName('id').AsInteger := p.id;
+        DT.Sql_professor.ParamByName('nome').AsString := p.nome;
+        DT.Sql_professor.ParamByName('idade').AsInteger := p.idade;
+        DT.Sql_professor.ParamByName('sexo').AsString := p.sexo;
+        DT.Sql_professor.ParamByName('cpf').AsString := p.CPF;
+        DT.Sql_professor.ParamByName('cidade').AsString := p.CIDADE;
+        DT.Sql_professor.ParamByName('bairro').AsString := p.BAIRRO;
+        DT.Sql_professor.ParamByName('endereco').AsString := p.ENDERECO;
+        DT.Sql_professor.ParamByName('cep').AsString := p.CEP;
+        DT.Sql_professor.ParamByName('uf').AsString := p.UF;
+        DT.Sql_professor.ParamByName('numero').AsString := p.NUMERO;
+        DT.Sql_professor.ParamByName('telefone').AsString := p.telefone;
+        DT.Sql_professor.ParamByName('email').AsString := p.email;
+        DT.Sql_professor.ParamByName('dt_cadastro').AsDateTime :=
+          p.datacadastro;
+        DT.Sql_professor.ParamByName('dt_atualizacao').AsDateTime :=
+          p.dataatualizacao;
+        DT.Sql_professor.ParamByName('user_atualizacao').AsInteger :=
+          p.useratualizacao;
+
+        DT.Sql_professor.ExecSQL;
+
+        Result := TRUE;
+
+      end;
+    except
+      on E: Exception do
+      begin
+
+        ShowMessage('Erro ao alterar registro professor : ' + E.Message);
+
+      end;
+
+    end;
+
+  FINALLY
+    // LIBERANDO O OBJETO DA MEMÓRIA
+    FreeAndNil(DT);
+  END;
+
+end;
+
+function TDprofessor.Ativar_inativarProfessor(p: TProfessor): boolean;
+var
+
+  DT: TDM;
+
+begin
+
+  try
+    begin
+
+      if DM = NIL then
+      BEGIN
+
+        DT := TDM.Create(nil);
+
+        DT.TFconexao.Connected := TRUE;
+        DT.Sql_professor.Close;
+        DT.Sql_professor.SQL.Clear;
+
+        DT.Sql_professor.SQL.Add
+          ('select id, nome, status from tb_professores where id =:id');
+        DT.Sql_professor.ParamByName('id').AsInteger := p.id;
+        DT.Sql_professor.open;
+        // -----------------------------------------------------------------
+        if not(DT.Sql_professor.IsEmpty) then
+        begin
+
+          p.status := (DT.Sql_professor.fieldByName('status').AsInteger);
+
+          DT.Sql_professor.Close;
+          DT.Sql_professor.SQL.Clear;
+          // -----------se o cliente estiver ativo, iremos desativar
+          if (p.status = 1) then
+          begin
+            If Application.MessageBox
+              ('Tem certeza que deseja inativar esse professor ?',
+              'Atenção !!!', MB_YESNO + MB_ICONQUESTION + MB_DEFBUTTON2)
+              = IDYES Then
+            begin
+              DT.Sql_professor.SQL.Add
+                ('update tb_professores set status = 0, user_atualizacao =:user, dt_atualizacao =:data where id =:id');
+              DT.Sql_professor.ParamByName('user').AsInteger :=
+                p.useratualizacao;
+              DT.Sql_professor.ParamByName('data').AsDateTime :=
+                p.dataatualizacao;
+              DT.Sql_professor.ParamByName('id').AsInteger := p.id;
+              DT.Sql_professor.ExecSQL;
+              ShowMessage('Professor inativado com sucesso!!!');
+              Result := TRUE;
+            end;
+          end
+          else
+          begin
+            If Application.MessageBox('Reativar professor ?', 'Atenção !!!',
+              MB_YESNO + MB_ICONQUESTION + MB_DEFBUTTON2) = IDYES Then
+            begin
+              DT.Sql_professor.SQL.Add
+                ('update tb_professores set status = 1, user_atualizacao =:user, dt_atualizacao =:data where id =:id');
+              DT.Sql_professor.ParamByName('user').AsInteger :=
+                p.useratualizacao;
+              DT.Sql_professor.ParamByName('data').AsDateTime :=
+                p.dataatualizacao;
+              DT.Sql_professor.ParamByName('id').AsInteger := p.id;
+              DT.Sql_professor.ExecSQL;
+              ShowMessage('Professor reativado com sucesso!!!');
+              Result := TRUE;
+            end;
+          end;
+
+        end
+
+        else
+        begin
+
+        end;
+        FreeAndNil(DT);
+
+      END;
+    end;
+
+  except
+    on E: Exception do
+    begin
+
+      ShowMessage('Erro ao tentar ativar / inativar professor: ' + E.Message);
+    end;
+  end;
+
+end;
+
+function TDprofessor.CadastraProfessor(p: TProfessor): boolean;
+var
+  DT: TDM;
+
+begin
+  Result := false;
+
+  TRY
+    DT := TDM.Create(nil);
+    try
+      begin
+
+        DT.TFconexao.Connected := TRUE;
+
+        DT.Sql_professor.Close;
+        DT.Sql_professor.SQL.Clear;
+
+        DT.Sql_professor.SQL.Add
+          ('insert into tb_professores  (nome,idade,sexo,cpf,cidade,bairro,endereco,cep,uf,numero,telefone,email,dt_cadastro,dt_atualizacao,user_atualizacao) ');
+        DT.Sql_professor.SQL.Add
+          ('values(:nome,:idade,:sexo,:cpf,:cidade,:bairro,:endereco,:cep,:uf,:numero,:telefone,:email,:dt_cadastro,:dt_atualizacao,:user_atualizacao)');
+
+        DT.Sql_professor.ParamByName('nome').AsString := p.nome;
+        DT.Sql_professor.ParamByName('idade').AsInteger := p.idade;
+        DT.Sql_professor.ParamByName('sexo').AsString := p.sexo;
+        DT.Sql_professor.ParamByName('cpf').AsString := p.CPF;
+        DT.Sql_professor.ParamByName('cidade').AsString := p.CIDADE;
+        DT.Sql_professor.ParamByName('bairro').AsString := p.BAIRRO;
+        DT.Sql_professor.ParamByName('endereco').AsString := p.ENDERECO;
+        DT.Sql_professor.ParamByName('cep').AsString := p.CEP;
+        DT.Sql_professor.ParamByName('uf').AsString := p.UF;
+        DT.Sql_professor.ParamByName('numero').AsString := p.NUMERO;
+        DT.Sql_professor.ParamByName('telefone').AsString := p.telefone;
+        DT.Sql_professor.ParamByName('email').AsString := p.email;
+        DT.Sql_professor.ParamByName('dt_cadastro').AsDateTime :=
+          p.datacadastro;
+        DT.Sql_professor.ParamByName('dt_atualizacao').AsDateTime :=
+          p.dataatualizacao;
+        DT.Sql_professor.ParamByName('user_atualizacao').AsInteger :=
+          p.useratualizacao;
+
+        DT.Sql_professor.ExecSQL;
+
+        Result := TRUE;
+
+      end;
+    except
+      on E: Exception do
+      begin
+
+        ShowMessage('Erro ao cadastrar professor : ' + E.Message);
+
+      end;
+
+    end;
+
+  FINALLY
+    // LIBERANDO O OBJETO DA MEMÓRIA
+    FreeAndNil(DT);
+  END;
+
+end;
+
+procedure TDprofessor.ListarDisciplinas(lista: TListView);
+var
+  DT: TDM;
+  s: TDataSource;
+  l: TListItem;
+
+begin
+
+  TRY
+    DT := TDM.Create(nil);
+    s := TDataSource.Create(nil);
+    try
+      begin
+
+        DT.TFconexao.Connected := TRUE;
+
+        DT.SQL_PROFESSOR.Close;
+        DT.SQL_PROFESSOR.SQL.Clear;
+
+        DT.SQL_PROFESSOR.SQL.Add
+          ('select disciplina,descricao from v_professor_disciplina where status=1');
+
+        DT.SQL_PROFESSOR.open;
+        if not(DT.SQL_PROFESSOR.IsEmpty) then
+        begin
+
+          DT.SQL_PROFESSOR.First;
+          lista.Items.Clear;
+          while not(DT.SQL_PROFESSOR.Eof) do
+          begin
+
+            l := lista.Items.Add;
+            l.Caption := IntToStr(DT.SQL_PROFESSOR.fieldByName('disciplina').Value);
+            l.SubItems.Add(DT.SQL_PROFESSOR.fieldByName('descricao').AsString);
+
+            DT.SQL_PROFESSOR.Next;;
+
+          end;
+        end;
+      end;
+    except
+      on E: Exception do
+      begin
+
+        ShowMessage('Erro ao listar Disciplinas : ' + E.Message);
+
+      end;
+
+    end;
+
+  FINALLY
+    // LIBERANDO O OBJETO DA MEMÓRIA
+    FreeAndNil(DT);
+  END;
+end;
+
+procedure TDprofessor.Listarprofessor(lista: TListView);
+var
+  DT: TDM;
+  s: TDataSource;
+  l: TListItem;
+
+begin
+
+  TRY
+    DT := TDM.Create(nil);
+    s := TDataSource.Create(nil);
+    try
+      begin
+
+        DT.TFconexao.Connected := TRUE;
+
+        DT.Sql_professor.Close;
+        DT.Sql_professor.SQL.Clear;
+
+        DT.Sql_professor.SQL.Add('select * from v_professores');
+
+        DT.Sql_professor.open;
+        if not(DT.Sql_professor.IsEmpty) then
+        begin
+
+          DT.Sql_professor.First;
+          lista.Items.Clear;
+          while not(DT.Sql_professor.Eof) do
+          begin
+
+            l := lista.Items.Add;
+            l.Caption := IntToStr(DT.Sql_professor.fieldByName('id').Value);
+            l.SubItems.Add(DT.Sql_professor.fieldByName('nome').AsString);
+            l.SubItems.Add(DT.Sql_professor.fieldByName('cpf').AsString);
+            l.SubItems.Add(DT.Sql_professor.fieldByName('telefone').AsString);
+            l.SubItems.Add(DT.Sql_professor.fieldByName('cidade').AsString);
+
+            l.SubItems.Add(DT.Sql_professor.fieldByName('bairro').AsString);
+            l.SubItems.Add(DT.Sql_professor.fieldByName('UF').AsString);
+            if DT.Sql_professor.fieldByName('status').AsInteger = 1 then
+            begin
+              l.SubItems.Add('Ativo');
+            end
+            else
+            begin
+              l.SubItems.Add('Inativo');
+            end;
+            l.SubItems.Add(DT.Sql_professor.fieldByName('email').AsString);
+            l.SubItems.Add(DT.Sql_professor.fieldByName('idade').AsString);
+            l.SubItems.Add(DT.Sql_professor.fieldByName('sexo').AsString);
+            l.SubItems.Add(DT.Sql_professor.fieldByName('endereco').AsString);
+            l.SubItems.Add(DT.Sql_professor.fieldByName('cep').AsString);
+            l.SubItems.Add(DT.Sql_professor.fieldByName('numero').AsString);
+            l.SubItems.Add(DT.Sql_professor.fieldByName('idade').AsString);
+            l.SubItems.Add(DT.Sql_professor.fieldByName('dt_cadastro')
+              .AsString);
+            l.SubItems.Add(DT.Sql_professor.fieldByName
+              ('dt_atualizacao').Value);
+            l.SubItems.Add(DT.Sql_professor.fieldByName('user').Value);
+            l.SubItems.Add
+              (IntToStr(DT.Sql_professor.fieldByName('id_user').Value));
+
+            DT.Sql_professor.Next;;
+
+          end;
+        end;
+      end;
+    except
+      on E: Exception do
+      begin
+
+        ShowMessage('Erro ao listar professores : ' + E.Message);
+
+      end;
+
+    end;
+
+  FINALLY
+    // LIBERANDO O OBJETO DA MEMÓRIA
+    // FreeAndNil(DT);
+  END;
+
+end;
+
+function TDprofessor.VinculaDisciplinas(p: TProfessor;
+  disciplina: integer): boolean;
+var
+  DT: TDM;
+
+begin
+  Result := false;
+
+  TRY
+    DT := TDM.Create(nil);
+    try
+      begin
+
+        DT.TFconexao.Connected := TRUE;
+
+         DT.SQL_PROFESSOR.Close;
+        DT.SQL_PROFESSOR.SQL.Clear;
+
+        DT.SQL_PROFESSOR.SQL.Add
+          ('select disciplina,descricao from v_professor_disciplina where status=1');
+
+        DT.SQL_PROFESSOR.open;
+        if not(DT.SQL_PROFESSOR.IsEmpty) then
+        begin
+
+        end
+        else
+        begin  // se não estiver vinculada ainda, vamos vincular
+
+        DT.Sql_professor.Close;
+        DT.Sql_professor.SQL.Clear;
+
+        DT.Sql_professor.SQL.Add
+          ('insert into tb_professor_disciplina (professor,disciplina,status,dt_cadastro,dt_atualizacao,user_atualizacao) ');
+        DT.Sql_professor.SQL.Add
+          ('values (:professor,:disciplina,:status,:dt_cadastro,:dt_atualizacao,:user_atualizacao)');
+        DT.Sql_professor.ParamByName('professor').AsInteger := p.id;
+        DT.Sql_professor.ParamByName('disciplina').AsInteger := disciplina;
+        DT.Sql_professor.ParamByName('status').AsInteger := p.status;
+
+        DT.Sql_professor.ParamByName('dt_cadastro').AsDateTime :=
+          p.datacadastro;
+        DT.Sql_professor.ParamByName('dt_atualizacao').AsDateTime :=
+          p.dataatualizacao;
+        DT.Sql_professor.ParamByName('user_atualizacao').AsInteger :=
+          p.useratualizacao;
+
+        DT.Sql_professor.ExecSQL;
+
+        Result := TRUE;
+
+        end;
+      end;
+    except
+      on E: Exception do
+      begin
+
+        ShowMessage('Erro ao vincular disciplina : ' + E.Message);
+
+      end;
+
+    end;
+
+  FINALLY
+    // LIBERANDO O OBJETO DA MEMÓRIA
+    FreeAndNil(DT);
+  END;
+end;
+
+end.

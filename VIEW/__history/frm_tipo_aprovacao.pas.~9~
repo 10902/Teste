@@ -1,0 +1,190 @@
+unit frm_tipo_aprovacao;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  Ttela_tipo_aprovacao = class(TForm)
+    Button1: TButton;
+    RD_TODOS: TRadioButton;
+    RD_APROVADOS: TRadioButton;
+    RD_REPROVADOS: TRadioButton;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  tela_tipo_aprovacao: Ttela_tipo_aprovacao;
+
+implementation
+
+{$R *.dfm}
+
+uses frm_relatorio_notas, data_module;
+
+procedure Ttela_tipo_aprovacao.Button1Click(Sender: TObject);
+var
+  dm: TDM;
+
+begin
+
+  // --------------------------------Todos os alunos
+
+  if RD_TODOS.Checked then
+  begin
+    if tela_relatorio_notas = nil then
+    begin
+      tela_relatorio_notas := Ttela_relatorio_notas.Create(Application);
+
+      // consulta para agrupar por profissionais
+      dm := TDM.Create(nil);
+
+      dm.TFConexao.Connected := true;
+      dm.SQL_NOTAS.Close;
+      dm.SQL_NOTAS.SQL.Clear;
+      dm.SQL_NOTAS.SQL.Add
+        ('select *,case when media >=7 then "aprovado" when media<7  then "reprovado" end as status from v_notas_aluno');
+
+      dm.SQL_NOTAS.Open;
+      // Dados do cabeçalho
+      tela_relatorio_notas.rl_tipo.Caption := 'ANALÍTICO';
+
+      ;
+      tela_relatorio_notas.RLReport1.DataSource := dm.ds_notas;
+      tela_relatorio_notas.RLSubDetail1.DataSource := dm.ds_notas;
+      tela_relatorio_notas.RLGroup1.DataFields := 'aluno';
+
+      tela_relatorio_notas.campo_codigo_aluno.DataSource := dm.ds_notas;
+      tela_relatorio_notas.campo_aluno.DataSource := dm.ds_notas;
+      tela_relatorio_notas.campo_disciplina.DataSource := dm.ds_notas;
+      tela_relatorio_notas.campo_cod_disciplina.DataSource := dm.ds_notas;
+      tela_relatorio_notas.campo_nota1.DataSource := dm.ds_notas;
+      tela_relatorio_notas.campo_nota2.DataSource := dm.ds_notas;
+      tela_relatorio_notas.campo_media.DataSource := dm.ds_notas;
+      tela_relatorio_notas.campo_status.DataSource := dm.ds_notas;
+      tela_relatorio_notas.campo_nota_trabalho.DataSource := dm.ds_notas;
+      tela_relatorio_notas.campo_total_disciplinas.DataSource := dm.ds_notas;
+
+      tela_relatorio_notas.campo_codigo_aluno.DataField := 'aluno';
+      tela_relatorio_notas.campo_aluno.DataField := 'nome_aluno';
+      tela_relatorio_notas.campo_disciplina.DataField := 'descricao';
+      tela_relatorio_notas.campo_cod_disciplina.DataField := 'disciplina';
+      tela_relatorio_notas.campo_nota1.DataField := 'nota_1';
+      tela_relatorio_notas.campo_nota2.DataField := 'nota_2';
+      tela_relatorio_notas.campo_nota_trabalho.DataField := 'nota_trabalho';
+      tela_relatorio_notas.campo_media.DataField := 'media';
+      tela_relatorio_notas.campo_status.DataField := 'status';
+      tela_relatorio_notas.campo_total_disciplinas.DataField := 'disciplina';
+
+
+
+      // ------segunda consulta
+
+      dm.SQL_NOTAS2.Close;
+      dm.SQL_NOTAS2.SQL.Clear;
+      dm.SQL_NOTAS2.SQL.Add
+        ('select count(DISCIPLINA) AS TOTAL_REPROVADOS,(SELECT count(DISCIPLINA)from v_notas_aluno WHERE MEDIA >=7 ) AS TOTAL_APROVADOS from v_notas_aluno WHERE MEDIA <7 ');
+
+      dm.SQL_NOTAS2.Open;
+      tela_relatorio_notas.RLSubDetail2.DataSource := dm.ds_notas2;
+
+      tela_relatorio_notas.campo_total_reprovados.DataSource := dm.ds_notas2;
+      tela_relatorio_notas.campo_total_reprovados.DataField :=
+        'total_reprovados';
+      tela_relatorio_notas.campo_total_aprovados.DataSource := dm.ds_notas2;
+      tela_relatorio_notas.campo_total_aprovados.DataField := 'total_aprovados';
+
+    end
+    else if RD_APROVADOS.Checked then
+    begin
+      if tela_relatorio_notas = nil then
+      begin
+        tela_relatorio_notas := Ttela_relatorio_notas.Create(Application);
+
+        // consulta para agrupar por profissionais
+        dm := TDM.Create(nil);
+
+        dm.TFConexao.Connected := true;
+        dm.SQL_NOTAS.Close;
+        dm.SQL_NOTAS.SQL.Clear;
+        dm.SQL_NOTAS.SQL.Add
+          ('select *,case when media >=7 then "aprovado" when media<7  then "reprovado" end as status from v_notas_aluno where media>=7');
+
+        dm.SQL_NOTAS.Open;
+        // Dados do cabeçalho
+        tela_relatorio_notas.rl_tipo.Caption := 'ANALÍTICO';
+
+        ;
+        tela_relatorio_notas.RLReport1.DataSource := dm.ds_notas;
+        tela_relatorio_notas.RLSubDetail1.DataSource := dm.ds_notas;
+        tela_relatorio_notas.RLGroup1.DataFields := 'aluno';
+
+        tela_relatorio_notas.campo_codigo_aluno.DataSource := dm.ds_notas;
+        tela_relatorio_notas.campo_aluno.DataSource := dm.ds_notas;
+        tela_relatorio_notas.campo_disciplina.DataSource := dm.ds_notas;
+        tela_relatorio_notas.campo_cod_disciplina.DataSource := dm.ds_notas;
+        tela_relatorio_notas.campo_nota1.DataSource := dm.ds_notas;
+        tela_relatorio_notas.campo_nota2.DataSource := dm.ds_notas;
+        tela_relatorio_notas.campo_media.DataSource := dm.ds_notas;
+        tela_relatorio_notas.campo_status.DataSource := dm.ds_notas;
+        tela_relatorio_notas.campo_nota_trabalho.DataSource := dm.ds_notas;
+        tela_relatorio_notas.campo_total_disciplinas.DataSource := dm.ds_notas;
+
+        tela_relatorio_notas.campo_codigo_aluno.DataField := 'aluno';
+        tela_relatorio_notas.campo_aluno.DataField := 'nome_aluno';
+        tela_relatorio_notas.campo_disciplina.DataField := 'descricao';
+        tela_relatorio_notas.campo_cod_disciplina.DataField := 'disciplina';
+        tela_relatorio_notas.campo_nota1.DataField := 'nota_1';
+        tela_relatorio_notas.campo_nota2.DataField := 'nota_2';
+        tela_relatorio_notas.campo_nota_trabalho.DataField := 'nota_trabalho';
+        tela_relatorio_notas.campo_media.DataField := 'media';
+        tela_relatorio_notas.campo_status.DataField := 'status';
+        tela_relatorio_notas.campo_total_disciplinas.DataField := 'disciplina';
+
+
+
+        // ------segunda consulta
+
+        dm.SQL_NOTAS2.Close;
+        dm.SQL_NOTAS2.SQL.Clear;
+        dm.SQL_NOTAS2.SQL.Add
+          ('select count(DISCIPLINA) AS TOTAL_REPROVADOS,(SELECT count(DISCIPLINA)from v_notas_aluno WHERE MEDIA >=7 ) AS TOTAL_APROVADOS from v_notas_aluno WHERE MEDIA <7 ');
+
+        dm.SQL_NOTAS2.Open;
+        tela_relatorio_notas.RLSubDetail2.DataSource := dm.ds_notas2;
+
+        tela_relatorio_notas.campo_total_reprovados.DataSource := dm.ds_notas2;
+        tela_relatorio_notas.campo_total_reprovados.DataField :=
+          'total_reprovados';
+        tela_relatorio_notas.campo_total_aprovados.DataSource := dm.ds_notas2;
+        tela_relatorio_notas.campo_total_aprovados.DataField :=
+          'total_aprovados';
+      end;
+    end;
+    tela_relatorio_notas.RLReport1.Prepare;
+
+    tela_relatorio_notas.RLReport1.PreviewModal;
+
+    FreeAndNil(dm);
+    FreeAndNil(tela_relatorio_notas);
+
+  end;
+
+end;
+
+procedure Ttela_tipo_aprovacao.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  Action := caFree;
+  tela_tipo_aprovacao := nil;
+end;
+
+end.

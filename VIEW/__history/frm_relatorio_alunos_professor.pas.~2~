@@ -1,0 +1,24 @@
+unit frm_relatorio_alunos_professor;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs;
+
+type
+  Ttela_relatorio_alunos_professor = class(TForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  tela_relatorio_alunos_professor: Ttela_relatorio_alunos_professor;
+
+implementation
+
+{$R *.dfm}
+
+end.

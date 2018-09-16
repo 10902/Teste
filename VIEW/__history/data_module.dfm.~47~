@@ -1,0 +1,45 @@
+object DM: TDM
+  OldCreateOrder = False
+  Height = 414
+  Width = 484
+  object TFConexao: TFDConnection
+    Params.Strings = (
+      
+        'Database=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes T' +
+        'ecnologia\BD\bd_universidade.db'
+      'DriverID=SQLite')
+    LoginPrompt = False
+    Left = 32
+    Top = 32
+  end
+  object SQL_DATA: TFDQuery
+    Connection = TFConexao
+    Left = 112
+    Top = 32
+  end
+  object SQL_ALUNO: TFDQuery
+    Connection = TFConexao
+    Left = 136
+    Top = 216
+  end
+  object SQL_PROFESSOR: TFDQuery
+    Connection = TFConexao
+    Left = 40
+    Top = 128
+  end
+  object SQL_DISCIPLINA: TFDQuery
+    Connection = TFConexao
+    Left = 40
+    Top = 216
+  end
+  object FDPhysSQLiteDriverLink1: TFDPhysSQLiteDriverLink
+    Left = 352
+    Top = 40
+  end
+  object FDGUIxWaitCursor1: TFDGUIxWaitCursor
+    Provider = 'Forms'
+    ScreenCursor = gcrHourGlass
+    Left = 232
+    Top = 32
+  end
+end

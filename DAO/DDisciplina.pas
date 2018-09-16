@@ -1,0 +1,421 @@
+unit DDisciplina;
+
+interface
+
+Uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.ExtCtrls, Data.DB,
+  jpeg, Vcl.StdCtrls,
+  UDisciplina, Vcl.DBGrids;
+
+type
+
+  TDDisciplina = class(TObject)
+  private
+
+    { private declarations }
+  protected
+    { protected declarations }
+  public
+    { public declarations }
+    function CadastraDisciplina(a: TDisciplina): boolean;
+    function AlteraDisciplina(a: TDisciplina): boolean;
+    procedure ListarDisciplina(lista: TListView);
+    procedure ListarResumidaDisciplina(lista: TListView);
+    function Ativar_inativarDisciplina(a: TDisciplina): boolean;
+    procedure PreencheCombo(combo: TComboBox);
+
+
+  published
+    { published declarations }
+  end;
+
+implementation
+
+{ TDisciplinaDAO }
+
+uses DATA_MODULE;
+
+{ TDDisciplina }
+
+function TDDisciplina.AlteraDisciplina(a: TDisciplina): boolean;
+var
+  DT: TDM;
+
+begin
+  Result := false;
+
+  TRY
+    DT := TDM.Create(nil);
+    try
+      begin
+
+        DT.TFconexao.Connected := TRUE;
+
+        DT.Sql_Disciplina.Close;
+        DT.Sql_Disciplina.SQL.Clear;
+
+        DT.Sql_Disciplina.SQL.Add
+          ('update tb_Disciplina set descricao=:descricao,dt_cadastro=:dt_cadastro,dt_atualizacao=:dt_atualizacao,user_atualizacao=:user_atualizacao where id=:id');
+        DT.Sql_Disciplina.ParamByName('id').AsInteger := a.id;
+        DT.Sql_Disciplina.ParamByName('descricao').AsString := a.descricao;
+        DT.Sql_Disciplina.ParamByName('dt_cadastro').AsDateTime :=
+          a.datacadastro;
+        DT.Sql_Disciplina.ParamByName('dt_atualizacao').AsDateTime :=
+          a.dataatualizacao;
+        DT.Sql_Disciplina.ParamByName('user_atualizacao').AsInteger :=
+          a.useratualizacao;
+
+        DT.Sql_Disciplina.ExecSQL;
+
+        Result := TRUE;
+
+      end;
+    except
+      on E: Exception do
+      begin
+
+        ShowMessage('Erro ao alterar registro Disciplina : ' + E.Message);
+
+      end;
+
+    end;
+
+  FINALLY
+    // LIBERANDO O OBJETO DA MEMÓRIA
+    FreeAndNil(DT);
+  END;
+
+end;
+
+function TDDisciplina.Ativar_inativarDisciplina(a: TDisciplina): boolean;
+var
+
+  DT: TDM;
+
+begin
+
+  try
+    begin
+
+      if DM = NIL then
+      BEGIN
+
+        DT := TDM.Create(nil);
+
+        DT.TFconexao.Connected := TRUE;
+        DT.Sql_Disciplina.Close;
+        DT.Sql_Disciplina.SQL.Clear;
+
+        DT.Sql_Disciplina.SQL.Add
+          ('select id, descricao, status from tb_Disciplina where id =:id');
+        DT.Sql_Disciplina.ParamByName('id').AsInteger := a.id;
+        DT.Sql_Disciplina.open;
+        // -----------------------------------------------------------------
+        if not(DT.Sql_Disciplina.IsEmpty) then
+        begin
+
+          a.status := (DT.Sql_Disciplina.fieldByName('status').AsInteger);
+
+          DT.Sql_Disciplina.Close;
+          DT.Sql_Disciplina.SQL.Clear;
+          // -----------se o cliente estiver ativo, iremos desativar
+          if (a.status = 1) then
+          begin
+            If Application.MessageBox
+              ('Tem certeza que deseja inativar esse Disciplina ?',
+              'Atenção !!!', MB_YESNO + MB_ICONQUESTION + MB_DEFBUTTON2)
+              = IDYES Then
+            begin
+              DT.Sql_Disciplina.SQL.Add
+                ('update tb_Disciplina set status = 0, user_atualizacao =:user, dt_atualizacao =:data where id =:id');
+              DT.Sql_Disciplina.ParamByName('user').AsInteger :=
+                a.useratualizacao;
+              DT.Sql_Disciplina.ParamByName('data').AsDateTime :=
+                a.dataatualizacao;
+              DT.Sql_Disciplina.ParamByName('id').AsInteger := a.id;
+              DT.Sql_Disciplina.ExecSQL;
+              ShowMessage('Disciplina inativada com sucesso!!!');
+              Result := TRUE;
+            end;
+          end
+          else
+          begin
+            If Application.MessageBox('Reativar Disciplina ?', 'Atenção !!!',
+              MB_YESNO + MB_ICONQUESTION + MB_DEFBUTTON2) = IDYES Then
+            begin
+              DT.Sql_Disciplina.SQL.Add
+                ('update tb_Disciplina set status = 1, user_atualizacao =:user, dt_atualizacao =:data where id =:id');
+              DT.Sql_Disciplina.ParamByName('user').AsInteger :=
+                a.useratualizacao;
+              DT.Sql_Disciplina.ParamByName('data').AsDateTime :=
+                a.dataatualizacao;
+              DT.Sql_Disciplina.ParamByName('id').AsInteger := a.id;
+              DT.Sql_Disciplina.ExecSQL;
+              ShowMessage('Disciplina reativada com sucesso!!!');
+              Result := TRUE;
+            end;
+          end;
+
+        end
+
+        else
+        begin
+
+        end;
+        FreeAndNil(DT);
+
+      END;
+    end;
+
+  except
+    on E: Exception do
+    begin
+
+      ShowMessage('Erro ao tentar ativar / inativar Disciplina: ' + E.Message);
+    end;
+  end;
+
+end;
+
+function TDDisciplina.CadastraDisciplina(a: TDisciplina): boolean;
+var
+  DT: TDM;
+
+begin
+  Result := false;
+
+  TRY
+    DT := TDM.Create(nil);
+    try
+      begin
+
+        DT.TFconexao.Connected := TRUE;
+
+        DT.Sql_Disciplina.Close;
+        DT.Sql_Disciplina.SQL.Clear;
+
+        DT.Sql_Disciplina.SQL.Add
+          ('insert into tb_Disciplina (descricao,dt_cadastro,dt_atualizacao,user_atualizacao) ');
+        DT.Sql_Disciplina.SQL.Add
+          ('values(:descricao,:dt_cadastro,:dt_atualizacao,:user_atualizacao)');
+
+        DT.Sql_Disciplina.ParamByName('descricao').AsString := a.descricao;
+        DT.Sql_Disciplina.ParamByName('dt_cadastro').AsDateTime :=
+          a.datacadastro;
+        DT.Sql_Disciplina.ParamByName('dt_atualizacao').AsDateTime :=
+          a.dataatualizacao;
+        DT.Sql_Disciplina.ParamByName('user_atualizacao').AsInteger :=
+          a.useratualizacao;
+
+        DT.Sql_Disciplina.ExecSQL;
+
+        Result := TRUE;
+
+      end;
+    except
+      on E: Exception do
+      begin
+
+        ShowMessage('Erro ao cadastrar Disciplina : ' + E.Message);
+
+      end;
+
+    end;
+
+  FINALLY
+    // LIBERANDO O OBJETO DA MEMÓRIA
+    FreeAndNil(DT);
+  END;
+
+end;
+
+procedure TDDisciplina.ListarDisciplina(lista: TListView);
+var
+  DT: TDM;
+  s: TDataSource;
+  l: TListItem;
+
+begin
+
+  TRY
+    DT := TDM.Create(nil);
+    s := TDataSource.Create(nil);
+    try
+      begin
+
+        DT.TFconexao.Connected := TRUE;
+
+        DT.Sql_Disciplina.Close;
+        DT.Sql_Disciplina.SQL.Clear;
+
+        DT.Sql_Disciplina.SQL.Add('select * from v_disciplinas');
+
+        DT.Sql_Disciplina.open;
+        if not(DT.Sql_Disciplina.IsEmpty) then
+        begin
+
+          DT.Sql_Disciplina.First;
+          lista.Items.Clear;
+          while not(DT.Sql_Disciplina.Eof) do
+          begin
+
+            l := lista.Items.Add;
+            l.Caption := IntToStr(DT.Sql_Disciplina.fieldByName('id').Value);
+            l.SubItems.Add(DT.Sql_Disciplina.fieldByName('descricao').AsString);
+
+            if DT.Sql_Disciplina.fieldByName('status').AsInteger = 1 then
+            begin
+              l.SubItems.Add('Ativo');
+            end
+            else
+            begin
+              l.SubItems.Add('Inativo');
+            end;
+
+            l.SubItems.Add(DT.Sql_Disciplina.fieldByName('dt_cadastro')
+              .AsString);
+            l.SubItems.Add(DT.Sql_Disciplina.fieldByName
+              ('dt_atualizacao').Value);
+            l.SubItems.Add(DT.Sql_Disciplina.fieldByName('user').Value);
+            l.SubItems.Add
+              (IntToStr(DT.Sql_Disciplina.fieldByName('id_user').Value));
+
+            DT.Sql_Disciplina.Next;;
+
+          end;
+        end;
+      end;
+    except
+      on E: Exception do
+      begin
+
+        ShowMessage('Erro ao listar Disciplinas : ' + E.Message);
+
+      end;
+
+    end;
+
+  FINALLY
+    // LIBERANDO O OBJETO DA MEMÓRIA
+    FreeAndNil(DT);
+  END;
+
+end;
+
+procedure TDDisciplina.ListarResumidaDisciplina(lista: TListView);
+var
+  DT: TDM;
+  s: TDataSource;
+  l: TListItem;
+
+begin
+
+  TRY
+    DT := TDM.Create(nil);
+    s := TDataSource.Create(nil);
+    try
+      begin
+
+        DT.TFconexao.Connected := TRUE;
+
+        DT.Sql_Disciplina.Close;
+        DT.Sql_Disciplina.SQL.Clear;
+
+        DT.Sql_Disciplina.SQL.Add
+          ('select id,descricao from v_disciplinas where status=1');
+
+        DT.Sql_Disciplina.open;
+        if not(DT.Sql_Disciplina.IsEmpty) then
+        begin
+
+          DT.Sql_Disciplina.First;
+          lista.Items.Clear;
+          while not(DT.Sql_Disciplina.Eof) do
+          begin
+
+            l := lista.Items.Add;
+            l.Caption := IntToStr(DT.Sql_Disciplina.fieldByName('id').Value);
+            l.SubItems.Add(DT.Sql_Disciplina.fieldByName('descricao').AsString);
+
+            DT.Sql_Disciplina.Next;;
+
+          end;
+        end;
+      end;
+    except
+      on E: Exception do
+      begin
+
+        ShowMessage('Erro ao listar Disciplinas : ' + E.Message);
+
+      end;
+
+    end;
+
+  FINALLY
+    // LIBERANDO O OBJETO DA MEMÓRIA
+    FreeAndNil(DT);
+  END;
+
+end;
+
+procedure TDDisciplina.PreencheCombo(combo: TComboBox);
+var
+  DT: TDM;
+
+begin
+  try
+    begin
+
+      // VERIFICAR  SE O OBJETO ESTÁ LIBARADO NA MEMÓRIA
+      if DM = NIL then
+      BEGIN
+
+        // INSTANCIANDO O OBJETO DT
+        DT := TDM.Create(nil);
+
+        DT.TFconexao.Connected := TRUE;
+        DT.Sql_Disciplina.Close;
+        // VAI TRAZER OS CLIENTES ATIVOS
+        DT.Sql_Disciplina.SQL.Clear;
+        DT.Sql_Disciplina.SQL.Add
+          ('select id,descricao from v_disciplinas where status=1  order by descricao asc');
+        DT.Sql_Disciplina.open;
+
+        combo.Items.Clear;
+        combo.Items.Add('--Selecione--');
+        If Not DT.Sql_Disciplina.IsEmpty then
+        begin
+          DT.Sql_Disciplina.First;
+          while not DT.Sql_Disciplina.Eof do
+          begin
+
+            combo.Items.Add(DT.Sql_Disciplina.fieldByName('descricao').AsString
+              + '#' + IntToStr(DT.Sql_Disciplina.fieldByName('id').AsInteger));;
+
+            DT.Sql_Disciplina.Next;
+            Application.ProcessMessages;
+
+          end;
+          combo.ItemIndex := 0;
+        end;
+
+        FreeAndNil(DT);
+      END;
+    end;
+
+  except
+    on E: Exception do
+    begin
+      ShowMessage('Erro ao carregar disciplinas: ' + E.Message);
+      FreeAndNil(DT);
+
+    end;
+
+  end;
+
+end;
+
+end.

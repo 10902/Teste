@@ -1,0 +1,101 @@
+unit frm_relatorio_notas;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, RLReport, Vcl.Imaging.pngimage;
+
+type
+  Ttela_relatorio_notas = class(TForm)
+    RLReport1: TRLReport;
+    RLBand1: TRLBand;
+    RLImage1: TRLImage;
+    RLLabel1: TRLLabel;
+    RLLabel2: TRLLabel;
+    rl_tipo: TRLLabel;
+    RLLabel47: TRLLabel;
+    RLSystemInfo1: TRLSystemInfo;
+    RLBand2: TRLBand;
+    RLSubDetail1: TRLSubDetail;
+    RLGroup1: TRLGroup;
+    RLBand3: TRLBand;
+    RLLabel5: TRLLabel;
+    campo_codigo_profissional: TRLDBText;
+    RLLabel6: TRLLabel;
+    campo_aluno: TRLDBText;
+    RLDraw1: TRLDraw;
+    RLBand4: TRLBand;
+    campo_disciplina: TRLDBText;
+    campo_cod_disciplina: TRLDBText;
+    campo_nota1: TRLDBText;
+    campo_nota2: TRLDBText;
+    campo_tipo_comissao: TRLDBText;
+    RLDraw2: TRLDraw;
+    RLDraw4: TRLDraw;
+    RLDraw5: TRLDraw;
+    RLDraw8: TRLDraw;
+    campo_comissao_receber: TRLDBText;
+    campo_nota_trabalho: TRLDBText;
+    RLDraw13: TRLDraw;
+    RLDraw14: TRLDraw;
+    RLBand5: TRLBand;
+    RLDraw9: TRLDraw;
+    RLLabel18: TRLLabel;
+    campo_total_comissoes_receber: TRLDBResult;
+    RLLabel27: TRLLabel;
+    RLBand6: TRLBand;
+    RLLabel10: TRLLabel;
+    RLLabel11: TRLLabel;
+    RLLabel12: TRLLabel;
+    RLLabel13: TRLLabel;
+    RLLabel17: TRLLabel;
+    RLLabel19: TRLLabel;
+    RLLabel4: TRLLabel;
+    RLSubDetail2: TRLSubDetail;
+    RLBand7: TRLBand;
+    RLLabel20: TRLLabel;
+    RLDraw11: TRLDraw;
+    RLGroup2: TRLGroup;
+    RLBand9: TRLBand;
+    RLBand8: TRLBand;
+    campo_nome_profissional_resumo: TRLDBText;
+    RLLabel21: TRLLabel;
+    campo_cod_profissional_resumo: TRLDBText;
+    RLLabel23: TRLLabel;
+    RLBand10: TRLBand;
+    campo_resumo_valor_comissao_profissional: TRLDBResult;
+    RLLabel22: TRLLabel;
+    RLLabel28: TRLLabel;
+    RLBand14: TRLBand;
+    RLBand13: TRLBand;
+    RLSubDetail3: TRLSubDetail;
+    RLGroup3: TRLGroup;
+    RLBand11: TRLBand;
+    RLLabel24: TRLLabel;
+    RLDraw12: TRLDraw;
+    RLBand12: TRLBand;
+    RLBand15: TRLBand;
+    RLLabel25: TRLLabel;
+    campo_valor_comandas_resumo: TRLDBResult;
+    RLLabel26: TRLLabel;
+    campo_resumo_valor_comissao: TRLDBResult;
+    RLLabel29: TRLLabel;
+    RLLabel30: TRLLabel;
+    RLBand16: TRLBand;
+    RLLabel31: TRLLabel;
+    RLSystemInfo2: TRLSystemInfo;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  tela_relatorio_notas: Ttela_relatorio_notas;
+
+implementation
+
+{$R *.dfm}
+
+end.

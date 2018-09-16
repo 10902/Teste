@@ -1,0 +1,425 @@
+unit DAluno;
+
+interface
+
+Uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.ExtCtrls, Data.DB,
+  jpeg, Vcl.StdCtrls,
+  UAluno, Vcl.DBGrids;
+
+type
+
+  TDAluno = class(TObject)
+  private
+    function Ativar_inativarCliente(a: TAluno): boolean;
+    { private declarations }
+  protected
+    { protected declarations }
+  public
+    { public declarations }
+    function CadastraAluno(a: TAluno): boolean;
+    function AlteraAluno(a: TAluno): boolean;
+    procedure ListarAluno(lista: TListView);
+    function Ativar_inativarProfessoa(a: TAluno): boolean;
+
+  published
+    { published declarations }
+  end;
+
+implementation
+
+{ TAlunoDAO }
+
+uses DATA_MODULE;
+
+{ TDAluno }
+
+function TDAluno.AlteraAluno(a: TAluno): boolean;
+var
+  DT: TDM;
+
+begin
+  Result := false;
+
+  TRY
+    DT := TDM.Create(nil);
+    try
+      begin
+
+        DT.TFconexao.Connected := TRUE;
+
+        DT.Sql_Aluno.Close;
+        DT.Sql_Aluno.SQL.Clear;
+
+        DT.Sql_Aluno.SQL.Add
+          ('update tb_Aluno set nome=:nome,idade=:idade,sexo=:sexo,cpf=:cpf,matricula=:matricula,cidade=:cidade,bairro=:bairro,endereco=:endereco,cep=:cep,uf=:uf,numero=:numero,');
+        DT.Sql_Aluno.SQL.Add
+          ('telefone=:telefone,email=:email,dt_cadastro=:dt_cadastro,dt_atualizacao=:dt_atualizacao,user_atualizacao=:user_atualizacao where id=:id');
+        DT.Sql_Aluno.ParamByName('id').AsInteger := a.id;
+        DT.Sql_Aluno.ParamByName('nome').AsString := a.nome;
+        DT.Sql_Aluno.ParamByName('idade').AsInteger := a.idade;
+        DT.Sql_Aluno.ParamByName('sexo').AsString := a.sexo;
+        DT.Sql_Aluno.ParamByName('cpf').AsString := a.CPF;
+        DT.Sql_Aluno.ParamByName('matricula').AsString := a.CPF;
+        DT.Sql_Aluno.ParamByName('cidade').AsString := a.CIDADE;
+        DT.Sql_Aluno.ParamByName('bairro').AsString := a.BAIRRO;
+        DT.Sql_Aluno.ParamByName('endereco').AsString := a.ENDERECO;
+        DT.Sql_Aluno.ParamByName('cep').AsString := a.CEP;
+        DT.Sql_Aluno.ParamByName('uf').AsString := a.UF;
+        DT.Sql_Aluno.ParamByName('numero').AsString := a.NUMERO;
+        DT.Sql_Aluno.ParamByName('telefone').AsString := a.telefone;
+        DT.Sql_Aluno.ParamByName('email').AsString := a.email;
+        DT.Sql_Aluno.ParamByName('dt_cadastro').AsDateTime := a.datacadastro;
+        DT.Sql_Aluno.ParamByName('dt_atualizacao').AsDateTime :=
+          a.dataatualizacao;
+        DT.Sql_Aluno.ParamByName('user_atualizacao').AsInteger :=
+          a.useratualizacao;
+
+        DT.Sql_Aluno.ExecSQL;
+
+        Result := TRUE;
+
+      end;
+    except
+      on E: Exception do
+      begin
+
+        ShowMessage('Erro ao alterar registro Aluno : ' + E.Message);
+
+      end;
+
+    end;
+
+  FINALLY
+    // LIBERANDO O OBJETO DA MEMÓRIA
+    FreeAndNil(DT);
+  END;
+
+end;
+
+function TDAluno.Ativar_inativarCliente(a: TAluno): boolean;
+var
+
+  DT: TDM;
+
+begin
+
+  try
+    begin
+
+      if DM = NIL then
+      BEGIN
+
+        DT := TDM.Create(nil);
+
+        DT.TFconexao.Connected := TRUE;
+        DT.Sql_Aluno.Close;
+        DT.Sql_Aluno.SQL.Clear;
+
+        DT.Sql_Aluno.SQL.Add
+          ('select id, nome, status from tb_aluno where id =:id');
+        DT.Sql_Aluno.ParamByName('id').AsInteger := a.id;
+        DT.Sql_Aluno.open;
+        // -----------------------------------------------------------------
+        if not(DT.Sql_Aluno.IsEmpty) then
+        begin
+
+          a.status := (DT.Sql_Aluno.fieldByName('status').AsInteger);
+
+          DT.Sql_Aluno.Close;
+          DT.Sql_Aluno.SQL.Clear;
+          // -----------se o cliente estiver ativo, iremos desativar
+          if (a.status = 1) then
+          begin
+            If Application.MessageBox
+              ('Tem certeza que deseja inativar esse aluno ?', 'Atenção !!!',
+              MB_YESNO + MB_ICONQUESTION + MB_DEFBUTTON2) = IDYES Then
+            begin
+              DT.Sql_Aluno.SQL.Add
+                ('update tb_aluno set status = 0, user_atualizacao =:user, dt_atualizacao =:data where id =:id');
+              DT.Sql_Aluno.ParamByName('user').AsInteger := a.useratualizacao;
+              DT.Sql_Aluno.ParamByName('data').AsDateTime := a.dataatualizacao;
+              DT.Sql_Aluno.ParamByName('id').AsInteger := a.id;
+              DT.Sql_Aluno.ExecSQL;
+              ShowMessage('aluno inativado com sucesso!!!');
+              Result := TRUE;
+            end;
+          end
+          else
+          begin
+            If Application.MessageBox('Reativar aluno ?', 'Atenção !!!',
+              MB_YESNO + MB_ICONQUESTION + MB_DEFBUTTON2) = IDYES Then
+            begin
+              DT.Sql_Aluno.SQL.Add
+                ('update tb_aluno set status = 1, user_atualizacao =:user, dt_atualizacao =:data where id =:id');
+              DT.Sql_Aluno.ParamByName('user').AsInteger := a.useratualizacao;
+              DT.Sql_Aluno.ParamByName('data').AsDateTime := a.dataatualizacao;
+              DT.Sql_Aluno.ParamByName('id').AsInteger := a.id;
+              DT.Sql_Aluno.ExecSQL;
+              ShowMessage('aluno reativado com sucesso!!!');
+              Result := TRUE;
+            end;
+          end;
+
+        end
+
+        else
+        begin
+
+        end;
+        FreeAndNil(DT);
+
+      END;
+    end;
+
+  except
+    on E: Exception do
+    begin
+
+      ShowMessage('Erro ao tentar ativar / inativar aluno: ' + E.Message);
+    end;
+  end;
+
+end;
+
+function TDAluno.Ativar_inativarProfessoa(a: TAluno): boolean;
+var
+
+  DT: TDM;
+
+begin
+
+  try
+    begin
+
+
+      if DM = NIL then
+      BEGIN
+
+
+        DT := TDM.Create(nil);
+
+        DT.TFconexao.Connected := TRUE;
+        DT.Sql_aluno.Close;
+        DT.Sql_aluno.SQL.Clear;
+
+        DT.Sql_aluno.SQL.Add
+          ('select id, nome, status from tb_alunoes where id =:id');
+        DT.Sql_aluno.ParamByName('id').AsInteger := p.id;
+        DT.Sql_aluno.open;
+        // -----------------------------------------------------------------
+        if not(DT.Sql_aluno.IsEmpty) then
+        begin
+
+          p.status := (DT.Sql_aluno.fieldByName('status').AsInteger);
+
+          DT.Sql_aluno.Close;
+          DT.Sql_aluno.SQL.Clear;
+          // -----------se o cliente estiver ativo, iremos desativar
+          if (p.status = 1) then
+          begin
+            If Application.MessageBox
+              ('Tem certeza que deseja inativar esse aluno ?',
+              'Atenção !!!', MB_YESNO + MB_ICONQUESTION + MB_DEFBUTTON2)
+              = IDYES Then
+          begin
+            DT.Sql_aluno.SQL.Add
+              ('update tb_alunoes set status = 0, user_atualizacao =:user, dt_atualizacao =:data where id =:id');
+            DT.Sql_aluno.ParamByName('user').AsInteger :=
+              p.useratualizacao;
+            DT.Sql_aluno.ParamByName('data').AsDateTime :=
+            p.dataatualizacao;
+            DT.Sql_aluno.ParamByName('id').AsInteger := p.id;
+            DT.Sql_aluno.ExecSQL;
+              ShowMessage('aluno inativado com sucesso!!!');
+              Result := TRUE;
+            end;
+          end
+          else
+          begin
+            If Application.MessageBox('Reativar aluno ?', 'Atenção !!!',
+              MB_YESNO + MB_ICONQUESTION + MB_DEFBUTTON2) = IDYES Then
+            begin
+              DT.Sql_aluno.SQL.Add
+                ('update tb_aluno set status = 1, user_atualizacao =:user, dt_atualizacao =:data where id =:id');
+              DT.Sql_aluno.ParamByName('user').AsInteger :=
+                p.useratualizacao;
+              DT.Sql_aluno.ParamByName('data').AsDateTime :=
+                p.dataatualizacao;
+              DT.Sql_aluno.ParamByName('id').AsInteger := p.id;
+              DT.Sql_aluno.ExecSQL;
+              ShowMessage('aluno reativado com sucesso!!!');
+              Result := TRUE;
+            end;
+          end;
+
+        end
+
+        else
+        begin
+
+        end;
+        FreeAndNil(DT);
+
+      END;
+    end;
+
+  except
+    on E: Exception do
+    begin
+
+      ShowMessage('Erro ao tentar ativar / inativar aluno: ' + E.Message);
+    end;
+  end;
+
+
+end;
+
+function TDAluno.CadastraAluno(a: TAluno): boolean;
+var
+  DT: TDM;
+
+begin
+  Result := false;
+
+  TRY
+    DT := TDM.Create(nil);
+    try
+      begin
+
+        DT.TFconexao.Connected := TRUE;
+
+        DT.Sql_Aluno.Close;
+        DT.Sql_Aluno.SQL.Clear;
+
+        DT.Sql_Aluno.SQL.Add
+          ('insert into tb_Aluno (nome,idade,sexo,cpf,matricula,cidade,bairro,endereco,cep,uf,numero,telefone,email,dt_cadastro,dt_atualizacao,user_atualizacao) ');
+        DT.Sql_Aluno.SQL.Add
+          ('values(:nome,:idade,:sexo,:cpf,:matricula,:cidade,:bairro,:endereco,:cep,:uf,:numero,:telefone,:email,:dt_cadastro,:dt_atualizacao,:user_atualizacao)');
+
+        DT.Sql_Aluno.ParamByName('nome').AsString := a.nome;
+        DT.Sql_Aluno.ParamByName('idade').AsInteger := a.idade;
+        DT.Sql_Aluno.ParamByName('sexo').AsString := a.sexo;
+        DT.Sql_Aluno.ParamByName('cpf').AsString := a.CPF;
+        DT.Sql_Aluno.ParamByName('matricula').AsString := a.matricula;
+        DT.Sql_Aluno.ParamByName('cidade').AsString := a.CIDADE;
+        DT.Sql_Aluno.ParamByName('bairro').AsString := a.BAIRRO;
+        DT.Sql_Aluno.ParamByName('endereco').AsString := a.ENDERECO;
+        DT.Sql_Aluno.ParamByName('cep').AsString := a.CEP;
+        DT.Sql_Aluno.ParamByName('uf').AsString := a.UF;
+        DT.Sql_Aluno.ParamByName('numero').AsString := a.NUMERO;
+        DT.Sql_Aluno.ParamByName('telefone').AsString := a.telefone;
+        DT.Sql_Aluno.ParamByName('email').AsString := a.email;
+        DT.Sql_Aluno.ParamByName('dt_cadastro').AsDateTime := a.datacadastro;
+        DT.Sql_Aluno.ParamByName('dt_atualizacao').AsDateTime :=
+          a.dataatualizacao;
+        DT.Sql_Aluno.ParamByName('user_atualizacao').AsInteger :=
+          a.useratualizacao;
+
+        DT.Sql_Aluno.ExecSQL;
+
+        Result := TRUE;
+
+      end;
+    except
+      on E: Exception do
+      begin
+
+        ShowMessage('Erro ao cadastrar Aluno : ' + E.Message);
+
+      end;
+
+    end;
+
+  FINALLY
+    // LIBERANDO O OBJETO DA MEMÓRIA
+    FreeAndNil(DT);
+  END;
+
+end;
+
+procedure TDAluno.ListarAluno(lista: TListView);
+var
+  DT: TDM;
+  s: TDataSource;
+  l: TListItem;
+
+begin
+
+  TRY
+    DT := TDM.Create(nil);
+    s := TDataSource.Create(nil);
+    try
+      begin
+
+        DT.TFconexao.Connected := TRUE;
+
+        DT.Sql_Aluno.Close;
+        DT.Sql_Aluno.SQL.Clear;
+
+        DT.Sql_Aluno.SQL.Add('select * from v_Alunos');
+
+        DT.Sql_Aluno.open;
+        if not(DT.Sql_Aluno.IsEmpty) then
+        begin
+
+          DT.Sql_Aluno.First;
+          lista.Items.Clear;
+          while not(DT.Sql_Aluno.Eof) do
+          begin
+
+            l := lista.Items.Add;
+            l.Caption := IntToStr(DT.Sql_Aluno.fieldByName('id').Value);
+            l.SubItems.Add(DT.Sql_Aluno.fieldByName('nome').AsString);
+            l.SubItems.Add(DT.Sql_Aluno.fieldByName('cpf').AsString);
+            l.SubItems.Add(DT.Sql_Aluno.fieldByName('matricula').AsString);
+            l.SubItems.Add(DT.Sql_Aluno.fieldByName('telefone').AsString);
+            l.SubItems.Add(DT.Sql_Aluno.fieldByName('cidade').AsString);
+
+            l.SubItems.Add(DT.Sql_Aluno.fieldByName('bairro').AsString);
+            l.SubItems.Add(DT.Sql_Aluno.fieldByName('UF').AsString);
+            if DT.Sql_Aluno.fieldByName('status').AsInteger = 1 then
+            begin
+              l.SubItems.Add('Ativo');
+            end
+            else
+            begin
+              l.SubItems.Add('Inativo');
+            end;
+            l.SubItems.Add(DT.Sql_Aluno.fieldByName('email').AsString);
+            l.SubItems.Add(DT.Sql_Aluno.fieldByName('idade').AsString);
+            l.SubItems.Add(DT.Sql_Aluno.fieldByName('sexo').AsString);
+            l.SubItems.Add(DT.Sql_Aluno.fieldByName('endereco').AsString);
+            l.SubItems.Add(DT.Sql_Aluno.fieldByName('cep').AsString);
+            l.SubItems.Add(DT.Sql_Aluno.fieldByName('numero').AsString);
+            l.SubItems.Add(DT.Sql_Aluno.fieldByName('idade').AsString);
+            l.SubItems.Add(DT.Sql_Aluno.fieldByName('dt_cadastro').AsString);
+            l.SubItems.Add(DT.Sql_Aluno.fieldByName('dt_atualizacao').Value);
+            l.SubItems.Add(DT.Sql_Aluno.fieldByName('user').Value);
+            l.SubItems.Add(IntToStr(DT.Sql_Aluno.fieldByName('id_user').Value));
+
+            DT.Sql_Aluno.Next;;
+
+          end;
+        end;
+      end;
+    except
+      on E: Exception do
+      begin
+
+        ShowMessage('Erro ao listar Alunoes : ' + E.Message);
+
+      end;
+
+    end;
+
+  FINALLY
+    // LIBERANDO O OBJETO DA MEMÓRIA
+    // FreeAndNil(DT);
+  END;
+
+end;
+
+end.

@@ -1,0 +1,65 @@
+unit UDisciplina;
+
+interface
+
+Uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.ExtCtrls, Data.DB,
+  jpeg,Upessoa;
+
+type
+
+  TDisciplina = class
+  private
+    Fuseratualizacao: integer;
+    Fdataatualizacao: tdate;
+    Femail: string;
+    Fid: integer;
+    Fstatus: integer;
+    Fdatacadastro: tdate;
+    Ftelefone: string;
+    Fnotatrabaljo: double;
+    Fnota2: double;
+    Fnota1: double;
+    Fcpf: string;
+    Fmedia: double;
+    Fmatricula: integer;
+    procedure Setdataatualizacao(const Value: tdate);
+    procedure Setdatacadastro(const Value: tdate);
+    procedure Setemail(const Value: string);
+    procedure Setid(const Value: integer);
+    procedure Setstatus(const Value: integer);
+    procedure Settelefone(const Value: string);
+    procedure Setuseratualizacao(const Value: integer);
+    procedure Setcpf(const Value: string);
+    procedure Setmatricula(const Value: integer);
+    procedure Setmedia(const Value: double);
+    procedure Setnota1(const Value: double);
+    procedure Setnota2(const Value: double);
+    procedure Setnotatrabaljo(const Value: double);
+
+  PUBLIC
+   property id: integer read Fid write Setid;
+    property telefone: string read Ftelefone write Settelefone;
+    property email: string read Femail write Setemail;
+    property cpf:string read Fcpf write Setcpf;
+    property matricula:integer read Fmatricula write Setmatricula;
+    property datacadastro: tdate read Fdatacadastro write Setdatacadastro;
+    property dataatualizacao: tdate read Fdataatualizacao
+      write Setdataatualizacao;
+    property status: integer read Fstatus write Setstatus;
+    property useratualizacao: integer read Fuseratualizacao
+      write Setuseratualizacao;
+
+      property nota1:double read Fnota1 write Setnota1;
+      property nota2:double read Fnota2 write Setnota2;
+      property notatrabaljo:double read Fnotatrabaljo write Setnotatrabaljo;
+      property media:double read Fmedia write Setmedia;
+  end;
+
+implementation
+
+
+
+end.

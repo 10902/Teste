@@ -1,0 +1,163 @@
+unit frm_vincula_disciplina_aluno;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ComCtrls, Vcl.StdCtrls,
+  Vcl.ExtCtrls, Vcl.Buttons;
+
+type
+  Ttela_vincula_disciplina_aluno = class(TForm)
+    Panel1: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    lb_aluno: TLabel;
+    lb_id: TLabel;
+    Label3: TLabel;
+    lb_id_disciplina: TLabel;
+    Label7: TLabel;
+    cb_disciplinas: TComboBox;
+    lista_disciplinas: TListView;
+    PopupMenu1: TPopupMenu;
+    Desvincular1: TMenuItem;
+    Panel2: TPanel;
+    Label4: TLabel;
+    procedure cb_disciplinasSelect(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
+    procedure Desvincular1Click(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure PopupMenu1Popup(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  tela_vincula_disciplina_aluno: Ttela_vincula_disciplina_aluno;
+
+implementation
+
+{$R *.dfm}
+
+uses CAluno, CDisciplina;
+
+procedure Ttela_vincula_disciplina_aluno.cb_disciplinasSelect(Sender: TObject);
+var
+  sPos: integer;
+  L: TListItem;
+  descricao: string;
+  i: integer;
+
+  a: TCAluno;
+  aluno, disciplina, user: integer;
+begin
+  // pegar o id da disciplina
+  sPos := Pos('#', cb_disciplinas.Items.Strings[cb_disciplinas.ItemIndex]);
+  if sPos > 0 then
+  begin
+    lb_id_disciplina.Caption :=
+      copy(cb_disciplinas.Items.Strings[cb_disciplinas.ItemIndex],
+      sPos + 1, 10);
+  end
+  else
+  begin
+    lb_id_disciplina.Caption := '';
+  end;
+
+  // vincular disciplina
+  if lb_id_disciplina.Caption <> '' then
+  begin
+
+    aluno := StrToInt(lb_id.Caption);
+    disciplina := StrToInt(lb_id_disciplina.Caption);
+    user := 1;
+    a := TCAluno.Create;
+    if a.VinculaDisciplinas(aluno, disciplina, user, lista_disciplinas) then
+    begin
+      ShowMessage('Disciplina vinculada com sucesso !');
+      a.ListarDisciplinas(aluno, lista_disciplinas);
+    end;
+    FreeAndNil(a);
+  end;
+
+end;
+
+procedure Ttela_vincula_disciplina_aluno.Desvincular1Click(Sender: TObject);
+var
+  a: TCAluno;
+  aluno, disciplina, user: integer;
+begin
+
+  If Application.MessageBox('Confirmar desvinculação ?', 'Atenção !!!',
+    MB_YESNO + MB_ICONQUESTION + MB_DEFBUTTON2) = IDYES Then
+  begin
+    aluno := StrToInt(lb_id.Caption);
+    disciplina := StrToInt(lista_disciplinas.Items.Item
+      [lista_disciplinas.ItemIndex].Caption);
+    user := 1;
+    a := TCAluno.Create;
+    if a.DesvincularDisciplina(aluno, user, disciplina, lista_disciplinas) then
+    begin
+
+      ShowMessage('Disciplina desvinculada com sucesso !');
+      a.ListarDisciplinas(aluno, lista_disciplinas);
+    end;
+    FreeAndNil(a);
+
+  end;
+end;
+
+procedure Ttela_vincula_disciplina_aluno.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  Action := caFree;
+  tela_vincula_disciplina_aluno := nil;
+end;
+
+procedure Ttela_vincula_disciplina_aluno.FormShow(Sender: TObject);
+var
+  d: TCDisciplina;
+  a: TCAluno;
+begin
+  d := TCDisciplina.Create;
+  a := TCAluno.Create;
+  d.PreencheCombo(cb_disciplinas);
+  a.ListarDisciplinas(StrToInt(lb_id.Caption), lista_disciplinas);
+
+  FreeAndNil(d);
+  FreeAndNil(a);
+
+end;
+
+procedure Ttela_vincula_disciplina_aluno.PopupMenu1Popup(Sender: TObject);
+begin
+  if lista_disciplinas.ItemIndex > -1 then
+  begin
+    PopupMenu1.Items.Items[0].Enabled := true;
+  end
+  else
+  begin
+    PopupMenu1.Items.Items[0].Enabled := false;
+  end;
+
+end;
+
+procedure Ttela_vincula_disciplina_aluno.SpeedButton1Click(Sender: TObject);
+var
+
+  x: TCAluno;
+begin
+
+  x := TCAluno.Create;
+
+  x.ListarDisciplinas(StrToInt(lb_id.Caption), lista_disciplinas);
+  lista_disciplinas.Refresh;
+  FreeAndNil(x);
+
+end;
+
+end.

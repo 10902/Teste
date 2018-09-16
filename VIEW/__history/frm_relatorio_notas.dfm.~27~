@@ -1,0 +1,1038 @@
+object tela_relatorio_notas: Ttela_relatorio_notas
+  Left = 0
+  Top = 0
+  Caption = 'tela_relatorio_notas'
+  ClientHeight = 710
+  ClientWidth = 795
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object RLReport1: TRLReport
+    Left = 1
+    Top = -5
+    Width = 794
+    Height = 1123
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = []
+    PageSetup.PaperSize = fpCustom
+    PageSetup.PaperWidth = 210.000000000000000000
+    PageSetup.PaperHeight = 297.000000000000000000
+    ShowExplosion = True
+    object RLBand1: TRLBand
+      Left = 38
+      Top = 57
+      Width = 718
+      Height = 192
+      BandType = btTitle
+      Borders.Sides = sdCustom
+      Borders.DrawLeft = False
+      Borders.DrawTop = False
+      Borders.DrawRight = False
+      Borders.DrawBottom = False
+      object RLImage1: TRLImage
+        Left = 3
+        Top = 3
+        Width = 712
+        Height = 105
+        Picture.Data = {
+          0954506E67496D61676589504E470D0A1A0A0000000D49484452000003330000
+          00770806000000378A1E510000000467414D410000B18F0BFC61050000000662
+          4B474400FF00FF00FFA0BDA793000018224944415478DAEDDD77785545DEC0F1
+          5F2A3124A1261403869E5054E4154140548AFBA0802C2A88AEAEA0202E202E56
+          40C102AC0DA589051144406441698A08FA222245902E04423074123A011202B9
+          6FE6F846EFC96DC9CDB93939F77E3FCFE30A73EE999933CFFE313F677E334102
+          00000000161464760700000000C01B0433000000002C896006000000802511CC
+          00000000B02482190000000096443003000000C0920866000000005812C10C00
+          0000004B22980100000060493E0D669E3FB3CFB639E7BCD8F2FE9CFF8F68FFB6
+          FDF1779B7DF95FFFEBF2F776EFFCF5A4E0EF6D4EEB8067E583426465ECB504B8
+          000000B0049F4F5CAF4BDF443C61115BE29A12C8000000C0327C3E79ED776A8F
+          6D6D4EA6D9DF090F1A8746CACC8A0D086600000060192532796575A67453FF27
+          D8CCAA0C0000002CA64426B04F9D4EB57D7FE98CD9DF0A17D85E060000002B2A
+          B149ECF5E99B6C2CCF943E24FD030000C0AA0A3B892D761C5263C22B52B14767
+          B3BF17051C18FCB29C9CF595D9DD00000000F215FA3FB49758301356A39A24AE
+          5920C1E161A68D0AF4CE6FD82A299D1E36BB1B00000080BDD217CC28578F795E
+          2AF7E961CA8840CF969B2B7B3A3C2017B7ED32BB2B00000080BDD219CC84C655
+          92A4F58B2438F22A5346057F393E758E1C7AFE3F66770300000028A87406334A
+          B5E183246ED023253E22F8CBE5E32765678BAE927B96FB7F00000050EA94DE60
+          26A45CB4246D5C222131D1253E2AF8C3FE2747C8A9D90BCDEE06000000E04CE9
+          0D6694B8C17DA4DAD001253A22F8C3F95FB648CA9DFF34BB1B000000802BA53B
+          98098E8C90C45F9648586CC5121D954067BB72E58FA4FFEDC966770500000070
+          A57407334AE5C77AC9D5A39E29B11181C8F18FE7C8A11748FA07000040A956FA
+          8399A0F030495CBB40C2E3AB95D8A804B29C8C93B2AB2549FF00000028F54A7F
+          30A354BCBFABD41837B2240624E0ED1FF4929CFA7C91D9DD000000003CB14630
+          23C1C1D2E0A779125137A104C624709D5FB759523A731C360000002CC122C14C
+          9E725D3A48C294377C3E22814A25FDEF6EDF4BB276EC36BB2B00000040615827
+          9851EAAD982D914D127D3A2281EAF894CFE5D0D0D7CDEE060000005058D60A66
+          A2DBB596DAB327F87444029196F4DFA2ABE49E23E91F0000009661AD6046A9B3
+          70AA44B568EAEB6602CAFE812FC9A93924FD030000C052AC17CC94BDA9A9D45D
+          34D5D7CD048CCCB59B646F97DE667703000000282AEB05334AADD91325A65DAB
+          9268CAAF6949FFEDEE97ACDFF698DD15000000A0A8AC19CC5CD52451EA2D9F25
+          414185EE3F9CC8F868961C1EF6A6D9DD00000000BC61CD6046B966CA1B52BE4B
+          87926ACEEFE4A49F905D2DEF26E91F0000005665DD60A64C9D6BB48B34834242
+          4AAA49AF9C5EB45CD2FA3CE3509E306DAC94EB749BB6D5EBF8D4397272E65792
+          9DF2BBD82EE578DD56DCE03E526DE88042FD76FF8017E5D4178BCD1E1E000000
+          C05BD60D66941AEF8E948ABDBA96649345B6EFC127E5ECB21F75652115CB4BA3
+          6DCB24F76296A4F61A2817D66F31A4AD066BBE9288BC20CF93C224FDAB2D7C7D
+          FBF695FEFDFB4B5252928487877BDDAF952B57CAADB7DEAAFDF9BEFBEE93A79E
+          7A4AAEBBEE3AB9EAAAAB8A548FCD6693B4B434193870A02C5EFC5720161A1A2A
+          83070F963E7DFA48DDBA75B5BF17D5A54B97A45AB56A121C1C2C870F1F96B0B0
+          30AFBFD7DE9C3973A467CF9EDA9F7BF5EAA5F5B3499326121111E1557D6DDAB4
+          919F7EFAC927F5010000588CB58399B0ABAB4AE2BA85121C6ECCC4D368D9A969
+          5A82BD2DE7B2AE5CADA0C4F6ED25FB1E78522E6CDA6E485BD1B7B7925A9FBEE3
+          F1778549FA5713F9B973E74AD7AEC6048ABD7BF79669D3A6C9A44993B4E0A8B8
+          F6EDDB27B56BD7D6FE5CB66C59F9FAEBAFE5965B6E29569DF3E7CF97EEDDBBCB
+          A0418364DCB871867CB7D2A9532759BA74A97CF4D1475AB0551C7BF7EED58235
+          15681A591F00008045593B9851AA8F7A56621FBBBFA49B2D94C32FBD2D19EF7F
+          A62FCC9B8836DCFAAD9C9AF78D1C19E939F828AC5A33C74B4C87361E7F97F1E1
+          4C393CFC2DB7BFB9EBAEBBA47DFBF686F44BAD788C1C39529A356BA6050B46C8
+          CDCD95A79F7E5AFBB75A9D68DEBC79B1EBFCE4934F64CB962DDA4A4742428221
+          FD3C77EE9CF6EDAD5BB7966EDDBA15BBBE65CB9669815BDBB66D0DAD0F0000C0
+          A2AC1FCC84C65694C4F58B25A46CD1B62CF99A2D6FA2FDDBF57F93CB473374E5
+          51AD6F943AF33F94E4DB7B48D6F6DD86B41552A19C34DAFE9D0479D81A9573EC
+          F81F49FF99E75DFEA67CF9F2DA36ABA26E017365C182055A1073E0C0016D1B97
+          11929393253131516AD5AA25292929DAD6B0E2504147952A55B47F5253530D3B
+          25EF830F3ED0B6C41D3C7850E2E2E28A5D9FDA4EA6BEDDC8FAB66F3766651000
+          00C004D60F6694AA43FF2555063F6A46D32E65ED4D93330B96399497BBAB9D84
+          C444C9C9590B1C9E45DFD652229B36F6599FD29E1826A7FFEBFEBFC4ABAD4B53
+          A64C31AC4D952373F6EC596DAB9551468C1821AFBCF28A0C1B364C5E7BEDB562
+          D7F7E9A79FCAC30F3F2C43870E9551A34619D64FB5F52D26264697DFE3ADAD5B
+          B76A794677DE79A7A1F501000058987F0433C179C141D28625125A3EC68CE69D
+          3AF8C27FE4C4C773F48521215AE2FF8919F3E5E898490EEFA8D3D922EAD7F649
+          7F32D7FE2A7BBB78CEB1507914F9F928F954EECCC2850BBD6E7BF5EAD572F3CD
+          37EBCA060C18A0E5D0B873EDB5D76A5BBFEC5DB870415B41C9C9C99123478E48
+          850A1574CF6FBAE92659BF7EBDE1E3F7D0430FC9F4E9D375659B366D921B6EB8
+          C1ED7B3FFFFCB3B46CD95257D6AF5F3FF9F0C30FBDEA87D1F501000058987F04
+          334ADC93BDA5DAB0816635AF1F84CB976547938E72E5C4295D7974BBD6527BF6
+          04D9D5EAEF92BD679FEE99BA08B4FE8AD93EEB8F96F4BF33C5EDEFD424594D96
+          ED9D387142DB1EA682076F5C73CD355AC2BEFDD6ADCB79FDA95EBDBA646464B8
+          7DF7F5D75F97679F7D5657367BF66C2D4F46E58CA8A47D7B7BF6EC91FAF5EBFB
+          640CBFFDF65BE9D8B1A3AE6CC890213276EC5897EFA8A0500587F6540E51D5AA
+          55E5D4A953525446D70700006071FE13CC045D152149EB17495895CA6675E14F
+          59BB53E5CCE2150EE5E5EFEE2841E1E186DEEF52B6E50D12D5B299DBDF647C30
+          530EBFF896C7BA5480A092CB75EFE6051C1B376E2C545F5442FEFEFDFB65D7AE
+          5D7F96DD7EFBEDD2A54B17DDEFD4F3F7DF7FDF637D2FBEF8A254AA544957A6B6
+          C0A93C0FB552527055E4D0A143B26DDBB6228DDFE6CD9BE5E8D1A36E7F131515
+          A525F2DB1FF9ACBE556D753B7DFAB4CBF7DAB56B279D3B77D695A92D77050346
+          4F5400A3023567F5EDD8B1433BD90C00002000F94F30A354EAD343E2C73C6F66
+          17340786BC2A2767E8570D82C242A5E18E15723C2FB038F6B6715B82EA7CF591
+          44DDFC3F2E9FE71CCB905D2DBBB94DFA575412BD4A2C3722497FF4E8D15A3E8B
+          A2B6625D7FFDF5BAE78F3CF2887654B33B6ABBD8DAB56B756567CE9CD1B698A9
+          A0E2D8B163DAB1CCC5A1EEAD512797A900CC1DB58DAB60F0A5B6CEA953CADC71
+          F6EDDE50018CCA937156DF3FFEF10FF9ECB3CFBCAC190000C0D2FC2B98510143
+          E29A05125EB3BA697DB0E5E4C88E46EDE5CAE9B3BAF2983BDA4AAD19EFCACE9B
+          BACAA57DFBBDAC5D2FAC5A9C246D5EEAF6F4ADB4FE43E5F4BC6F3CD6A526E6AB
+          56AD32A45F274F9ED456541A366CA8AD1CD8CBCACAD20212B542E1CEF8F1E3B5
+          93C0EC4D9D3A553BA0406D339B397366B1FBF9E38F3F3AAC44B9FA9DBA5CD2DE
+          134F3C2193274F76F98EB36FF746FE36BF7AF5EA39D4979F3F94999959EC7600
+          00002CC8BF8219A542CFCE5273FC2BA6B59F3E79861C19E19847516FF92C2D4F
+          667FFF6186B515FFD670A9F490EBBB5B327FDE207BEF7EAC5075A9BB65162D5A
+          6448BFD4D62B15CCA81583FBEFD7DF01F4E69B6F3AE4C114A4DE55C9FD61058E
+          9AAE53A78E7674B29AD4AB60A1B8EEB8E30EEDAE1577D489642B57AED495A5A7
+          A7CBD5575FADE5FEB8326BD62C876FF7C673CF3D276FBCF186D3FAC68C19A39D
+          C006000010A0FC2F9891E06069F0E35C9F9D0AE6C9EEDB7BCAC5EDC9BAB232F5
+          6A49E2EAF992DA73809CFB7EB5310D85864AA31DCB25B44239A78FB5A4FFBCBE
+          64EDDA5BA8EAC2C3C3B51508B5BDABB8D4059483060DD2B682454646EA9EA9E3
+          80D5B1C0EEF4EFDF5FDE7BEF3D5DD99A356BB413D19A366D2ABFFEFA6BB1FBA8
+          F264E2E3E3E5CA952B6E7FA7EE8AE9DBB7AFAE6CC28409DAF7B9A2726C9C7D7B
+          51A96D70356BD6D4824367F5356AD4487EFBEDB7628F0500008045F96130237F
+          DCE59230D573C2BBD172B3B22563F20C350BD595ABBB63A26E6D211913A66941
+          8611C2AAC649C55E5D5D3ECF78FF3339FCD2DB45AA332424444BAA2F98745F54
+          2A415F6D7D6AD1A285AE5CAD642C5FBEDCE3FBEA3247B5F2614F9D88A62E8C54
+          937B2356655470A072503C69D5AA95444747EBCA3C1D1AA02E1E2DF8EDDEB878
+          F1A2B62AE4AC3E75BADC8A152BBCAC190000C02FF86730A3D4FB6EA6445E57B4
+          49EFA9F9DFC8FEC71DB7EDD49A355E62DAB7F1F8FEB1773F96A3A3273A943758
+          F55FB9B071BB1C183CD2E159ED791F48749BE6867EBB96F4DFE26EC93D7FC1D0
+          7A1DFAEEE4A8E0ECEC6C2DC7435D3EA95658ECA953B70AAE7214A4561F54A0A1
+          5637EC356BD64C5B9159B76E9D346FAE1F2F5FDDB3E2EC9E1B15A4A93C1595AF
+          E28AB3D51C955FA3F26CBC61747D0000007EC27F8399E8DB5A4AED39EF15E99D
+          D45E03E5DCF29F74652115CB4BA3EDDF4990DDB1BCAE24DF728FC3B6AE8846F5
+          A5C10F73646FF77E92B94A7F996368955869B865A90405071BFAED697901D9E9
+          F99E93FE8B4B1D9DAC8E27B6F7E5975F4A8F1E3DB49C97822B3C2AD95E6D6573
+          47E585A8FC107B3B77EED4566354CE4C4A8AFEAE1C5FDEB3E2EC9E9B19336668
+          C742BBA2F27CD4AA4DC58A1575E56A85A7A84732FBA23E0000003FE2BFC18C52
+          67C1148F77B0D84B57DBC00A5C0E59A66E8294EFD2C1E3BBB9172E6A5BBB0A8A
+          6CD644A2DA34D7EA9602F919118975A55CA7DB0CFDE6CCD51B646FB7C225FD17
+          974A4E2F7894F3F4E9D3B5ED518F3FFEB8AE5CE57DBCFCF2CB5A1E883B8F3EFA
+          A8346EDC5857F6F5D75F6B89FAEDDBB7D70E2AB0A7B6B4A9BB677CC1D93D376A
+          05C85D9E4A525292B652644F055AEADBBD61747D0000007EC4BF8399C81BAF93
+          7A4BA615EAB7273F5F2807068D7028AF3D77B244B7F59CFF70F4CDF7E5D89B1F
+          389427AEFD4A3257FD22079F19E5F0ACCEC2A912D5A2A961DFABF271926FEB21
+          D9C9A9068EA273CEB6609D3B774E5B255177B2A8FB4FEC8D1D3B56860C19E2B6
+          4E57A798D5AD5B57DBCEE6EC1433754CF3ECD9B30DFF3E75D880BA4BC6DEF1E3
+          C7A57AF5EA5ABE8A2BEAC868D5277BEA343215F879C3E8FA000000FC887F0733
+          4AAD99E325A683E77C97946E8FC9F9D51B7465DA3D2E9BBEF1B80D4CAD36EC6A
+          DE592EA51DD295E707537B3A3D2C1736E84FF00A4F8897A4F5C61C859C2FFDBD
+          4FE5C8C8777C399C7F7AFBEDB7E5DFFFFEB7AE4C5D84A9EE8651DBA20A5E68A9
+          2E7B2C18FC14A47240264D9AA42BCB3FC54C1D4CB071E346DD3375578D0A9ED4
+          4A90D19CE5A94C9C38D1E1EE1B7BAE4E31532B4DDEDC3963747D0000007EC6FF
+          831995B352FFFBCFDD5E2C9995BC57767778402437D7E1DD727778BE54515D90
+          797CEA1C87F29A935E93F0DA3525252F982978C259B5118325F6B15E1EEB2EAC
+          9CA3E9B2AB65B72225FD3BBB98B238D496A86EDDBAC9E8D1A30DABB373E7CEB2
+          78F162F9E28B2FE4DE7BEFD53D53870C0C1F3EDCB0B6F255AE5C590E1F3EAC5B
+          2152016B424282ECDFEFFAC253D597575F7DB5D8EDABD598071F7CD0F0FA0000
+          00FC8CFF07334ACD0FFF2315EEBEC3E5F383CF8E9613D3E61ADA6668E50AD270
+          EB323930E45539357BA1EE59509970ED8E989098682F6B7794D6EF0539FDE5D2
+          C2F72F34549BB0C7C6C61AD2BE3A654C1D1FACF24954506304B5C253A3460D6D
+          9547FD39222242F7BC418306B27BF76EC3C6309FBA4366DCB871BAB2EFBFFF5E
+          DAB56BE7F63DA3BEBD63C78EF2DD77DF195E1F0000809F098C6026BC564D495C
+          3DCFE589643B1AB593CB19270D6D3376E03FA5EA90BE7975B777582D29D7A583
+          244C79C3B0B6327FFA45F6FEBD6F91DE518140C1A393BDA5562D5462BC3A754C
+          E5C6041B743ADBBC79F364D5AA5572E38D37CA030F3CA07B76F0E04179EB2DDF
+          DC25A4821975ECB43DB532E4E9F43023BE5DE51D8D1831427273730DAF0F0000
+          C0CF044630A3C48F7D512A3DF877A7CFD2C77F62D865964A68E58A52E9A1EE72
+          71678A9CFDE60787E7E5BBFD4DCAD4AA61485BEAF4B5E4DB7A4AF6EEA225FD7F
+          FCF1C7D2BB77EFE2B79F17C80C1B364CC68C19A3FD5D5D6EA9B66315970A8ED4
+          8968AAFE254B9648A74E9D74CF870E1DFA679B468A8F8F97B4B4345D10A12EFB
+          549778A6A7A7BB7DD7886FB7BF3FC6E8FA000000FC4CE0043361D5AB48E2BA85
+          125C26DCE199B3FB61BC151A5B516ACD9E2891D726C9FE7F0D97537397E89E07
+          474648C3ED2B24242AD2CB16F4D2274D97232FBF5BA477D4762D95581E1313E3
+          75BBE7CF9F970D1B3668F931EAD8E47C2AC765C2840952B3664DB7794ACE6465
+          65C9B66DDBE49D77DEF9F384B2B8B8383974E890B62D2E9F5A655093FC03070E
+          183286F65E78E105879C1F95B3A3BECB93E27C7B3EFBFB638CAE0F0000C0CF04
+          4E30A3547FF56989EDF7804379E6DA4D72F099D7247BCFEF0E870014963AF9AC
+          DC9DB74BDC538F49585E407325F382FCD6B89DE45EC8D2FDAEFC3D9DE49AF746
+          79D546413947D265D7CD774BEE79E34FF3020000004AB9C00A66422A5590A45F
+          161BB62A62B6B4C79E93D30B9615BF22000000C07A022B9851AA3CD75F4BCCB7
+          BA73ABD64B6AF77EC5AF08000000B0A6C00B6682A3CA4AD2C625125AA19CD95D
+          F19A96F47F6B0FC9DEB3CFECAE000000006609BC6046891DF0B0547F69B0D9DD
+          F05AFAC4E972E495A225FD030000007E26308399A0883292F4CB2209AB62CC85
+          912589A47F000000401398C18C52E99FF74AFC1B43CDEE4691FDFEE8B3726621
+          B7B903000020E0056E3023A1A192F8F397522621DEEC9E14DAB91FD749EA3D8F
+          9BDD0D000000A03408E060264F857BEF949A935E33BB1B85A225FDB7BD4FB253
+          7E37BB2B000000406910D8C18C0405498395732522B18ED93DF1287DC23439F2
+          EA38B3BB010000009416011ECCE489E9749BD49A36D6EC6EB875E9F031495649
+          FF17B2CCEE0A000000505A10CC28F596CE90C81B1A9BDD0D9748FA070000001C
+          10CC2851B7DC2475FEFBBED9DD70EADCFFAE91D4FB9E30BB1B00000040694330
+          93AFCEFC0F25AAF58D66774327F7528EEC6E7BAF64EF4D33BB2B000000406943
+          30932FB25913A9F7CDA7667743E7D8B8A97274D404B3BB0100000094460433F6
+          123E7D47CAFDED56B3BBA1B974E8A824B7EA46D23F000000E01CC18CBD88A4BA
+          52FF873912141C6C7657E4F73ECFC89945CBCDEE06000000505A11CC145473F2
+          28A9D0BD93A97D38F7C31A49ED41D23F000000E006C14C41E109F192F8F39712
+          141A6A4AFB5AD2FF2DF74876EA7EB3870200000028CD08669C897F6BB8547AA8
+          BB296D1F7BF763393A7AA2D9430000000094760433CE84568D95A4F58B2438A2
+          4C89B6AB92FE77DDDC4D6C1749FA070000003C209871A5DAC8A724EE89874AB4
+          CDDF7B3F2D6716AF30FBD3010000002B20987125A4423949DAB84442A2CA9648
+          7B67BFFF59F6F5FC97D99F0D0000005805C18C3B559EE927559F79DCE7EDA8A4
+          FFE436F7C8A57D24FD0300000085647830E377DA666CB59DB65DF1691B5BE29A
+          06ECF802000000BE16D093EDEBD237F96CC5A95A70982CADDC38A0C717000000
+          F0A5809E6C7738BEDD969E9BE393BA5995010000007C2BE027DCBE589DB9392C
+          5A2657A81BF0630B000000F852C04FB8EF3CBEC37630F79261F585E50DE986B8
+          EB037E5C010000005F63D22DC6AECEB0BD0C00000028194CBCF3743FB1D39672
+          25ABD8F590F40F000000941C26DEFFCF88D51956650000008092C3E4FBFF3D78
+          32D9B6EDF205AFDF6F1D1E2D93CA93F40F000000941426DF76BC5D9D21E91F00
+          000028794CC0EDF43DB5C7B62E27B3C8EFB1BD0C00000028794CC20B28EAEA4C
+          F5E070F9A67223C61100000028614CC20B187C3AD5F6C3A53385FE3DAB320000
+          00803998883B717DFA265B61966748FA07000000CCC344DC89A1677EB72DC93E
+          E5F637E17943F70B49FF0000008069988CBBD02C7D93EDB29BE76C2F03000000
+          CCC584DC0D57870190F40F000000988F09B91BCDD337DBB2C5319E6155060000
+          00301F93720F0AAECEB4098F9189E5EB306E00000080C998947BD02A638B2DD3
+          96ABFD99A47F000000A0F460625E08F9AB336C2F030000004A0F26E785706BC6
+          565B6450887C4DD23F000000506A30390700000060490433000000002C896006
+          000000802511CC00000000B02482190000000096443003000000C09208660000
+          00005812C10C000000004B22980100000060490433000000002C896006000000
+          802511CC00000000B02482190000000096F47F8AD64EF008F77E810000002574
+          455874646174653A63726561746500323031372D30342D32375430343A31393A
+          32312B30323A30306C745E010000002574455874646174653A6D6F6469667900
+          323031372D30342D32375430343A31393A32312B30323A30301D29E6BD000000
+          0049454E44AE426082}
+      end
+      object RLLabel1: TRLLabel
+        Left = 3
+        Top = 114
+        Width = 418
+        Height = 31
+        Caption = 'Relat'#243'rio de notas por alunos'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -27
+        Font.Name = 'Georgia'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object RLLabel2: TRLLabel
+        Left = 5
+        Top = 155
+        Width = 36
+        Height = 16
+        Caption = 'Tipo:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object rl_tipo: TRLLabel
+        Left = 42
+        Top = 155
+        Width = 113
+        Height = 16
+        AutoSize = False
+      end
+      object RLLabel47: TRLLabel
+        Left = 609
+        Top = 4
+        Width = 37
+        Height = 16
+        Alignment = taRightJustify
+        Caption = 'Data:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object RLSystemInfo1: TRLSystemInfo
+        Left = 647
+        Top = 4
+        Width = 67
+        Height = 16
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        Text = ''
+      end
+    end
+    object RLBand2: TRLBand
+      Left = 38
+      Top = 249
+      Width = 718
+      Height = 24
+      BandType = btTitle
+    end
+    object RLSubDetail1: TRLSubDetail
+      Left = 38
+      Top = 289
+      Width = 718
+      Height = 203
+      object RLGroup1: TRLGroup
+        Left = 0
+        Top = 0
+        Width = 718
+        Height = 193
+        IntegralHeight = True
+        object RLBand3: TRLBand
+          Left = 0
+          Top = 0
+          Width = 718
+          Height = 28
+          BandType = btHeader
+          object RLLabel5: TRLLabel
+            Left = 5
+            Top = 5
+            Width = 53
+            Height = 14
+            Caption = 'ALUNO:'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clNavy
+            Font.Height = -11
+            Font.Name = 'Georgia'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Transparent = False
+          end
+          object campo_codigo_aluno: TRLDBText
+            Left = 61
+            Top = 4
+            Width = 31
+            Height = 15
+            AutoSize = False
+            Text = ''
+          end
+          object RLLabel6: TRLLabel
+            Left = 86
+            Top = 6
+            Width = 7
+            Height = 14
+            Caption = '-'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clNavy
+            Font.Height = -11
+            Font.Name = 'Georgia'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Transparent = False
+          end
+          object campo_aluno: TRLDBText
+            Left = 96
+            Top = 5
+            Width = 223
+            Height = 15
+            AutoSize = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentFont = False
+            Text = ''
+          end
+          object RLDraw1: TRLDraw
+            Left = 5
+            Top = 24
+            Width = 708
+            Height = 1
+            Borders.Style = bsClear
+            Color = clWhite
+            ParentColor = False
+            Pen.Mode = pmXor
+          end
+        end
+        object RLBand4: TRLBand
+          Left = 0
+          Top = 60
+          Width = 718
+          Height = 31
+          object campo_disciplina: TRLDBText
+            Left = 61
+            Top = 10
+            Width = 223
+            Height = 14
+            AutoSize = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentFont = False
+            Text = ''
+          end
+          object campo_cod_disciplina: TRLDBText
+            Left = 3
+            Top = 10
+            Width = 44
+            Height = 15
+            Alignment = taJustify
+            AutoSize = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -12
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentFont = False
+            Text = ''
+          end
+          object campo_nota1: TRLDBText
+            Left = 301
+            Top = 10
+            Width = 50
+            Height = 15
+            Alignment = taCenter
+            AutoSize = False
+            DisplayMask = '0.00'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -12
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentFont = False
+            Text = ''
+          end
+          object campo_nota2: TRLDBText
+            Left = 376
+            Top = 10
+            Width = 42
+            Height = 15
+            Alignment = taCenter
+            AutoSize = False
+            DisplayMask = '0.00'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -12
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentFont = False
+            Text = ''
+          end
+          object campo_media: TRLDBText
+            Left = 563
+            Top = 10
+            Width = 50
+            Height = 15
+            Alignment = taCenter
+            AutoSize = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -12
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentFont = False
+            Text = ''
+          end
+          object RLDraw2: TRLDraw
+            Left = 54
+            Top = 10
+            Width = 1
+            Height = 17
+            Color = clBlack
+            ParentColor = False
+            Transparent = False
+          end
+          object RLDraw4: TRLDraw
+            Left = 290
+            Top = 10
+            Width = 1
+            Height = 17
+            Color = clBlack
+            ParentColor = False
+            Transparent = False
+          end
+          object RLDraw5: TRLDraw
+            Left = 366
+            Top = 10
+            Width = 1
+            Height = 17
+            Color = clBlack
+            ParentColor = False
+            Transparent = False
+          end
+          object RLDraw8: TRLDraw
+            Left = 626
+            Top = 11
+            Width = 1
+            Height = 17
+            Color = clBlack
+            ParentColor = False
+            Transparent = False
+          end
+          object campo_status: TRLDBText
+            Left = 644
+            Top = 10
+            Width = 62
+            Height = 15
+            Alignment = taCenter
+            AutoSize = False
+            DisplayMask = '0.00'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clGreen
+            Font.Height = -12
+            Font.Name = 'Arial'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Text = ''
+          end
+          object campo_nota_trabalho: TRLDBText
+            Left = 456
+            Top = 10
+            Width = 73
+            Height = 15
+            Alignment = taCenter
+            AutoSize = False
+            DisplayMask = '0.00'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -12
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentFont = False
+            Text = ''
+          end
+          object RLDraw13: TRLDraw
+            Left = 436
+            Top = 10
+            Width = 1
+            Height = 17
+            Color = clBlack
+            ParentColor = False
+            Transparent = False
+          end
+          object RLDraw14: TRLDraw
+            Left = 554
+            Top = 10
+            Width = 1
+            Height = 17
+            Color = clBlack
+            ParentColor = False
+            Transparent = False
+          end
+        end
+        object RLBand5: TRLBand
+          Left = 0
+          Top = 91
+          Width = 718
+          Height = 94
+          BandType = btColumnFooter
+          Borders.Sides = sdCustom
+          Borders.DrawLeft = False
+          Borders.DrawTop = False
+          Borders.DrawRight = False
+          Borders.DrawBottom = False
+          object RLDraw9: TRLDraw
+            Left = 455
+            Top = 29
+            Width = 250
+            Height = 1
+            Borders.Style = bsClear
+            Color = clWhite
+            ParentColor = False
+            Pen.Mode = pmXor
+          end
+          object RLLabel18: TRLLabel
+            Left = 507
+            Top = 38
+            Width = 153
+            Height = 16
+            Alignment = taRightJustify
+            Caption = 'Total de disciplinas:'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clNavy
+            Font.Height = -13
+            Font.Name = 'Arial'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Transparent = False
+          end
+          object campo_total_disciplinas: TRLDBResult
+            Left = 666
+            Top = 39
+            Width = 44
+            Height = 15
+            DisplayMask = '0.00'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clGreen
+            Font.Height = -12
+            Font.Name = 'Arial'
+            Font.Style = [fsBold]
+            Info = riCount
+            ParentFont = False
+            Text = ''
+          end
+        end
+        object RLBand6: TRLBand
+          Left = 0
+          Top = 28
+          Width = 718
+          Height = 32
+          BandType = btHeader
+          object RLLabel10: TRLLabel
+            Left = 5
+            Top = 15
+            Width = 17
+            Height = 14
+            Caption = 'ID'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'Georgia'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Transparent = False
+          end
+          object RLLabel11: TRLLabel
+            Left = 61
+            Top = 15
+            Width = 78
+            Height = 14
+            Caption = 'DISCIPLINA'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'Georgia'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Transparent = False
+          end
+          object RLLabel12: TRLLabel
+            Left = 300
+            Top = 15
+            Width = 50
+            Height = 14
+            Caption = 'NOTA 1'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'Georgia'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Transparent = False
+          end
+          object RLLabel13: TRLLabel
+            Left = 375
+            Top = 15
+            Width = 42
+            Height = 14
+            Caption = 'NOTA 2'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Transparent = False
+          end
+          object RLLabel17: TRLLabel
+            Left = 565
+            Top = 15
+            Width = 46
+            Height = 14
+            Caption = 'M'#201'DIA'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'Georgia'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Transparent = False
+          end
+          object RLLabel19: TRLLabel
+            Left = 644
+            Top = 15
+            Width = 62
+            Height = 14
+            Caption = 'STATUS'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'Georgia'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Transparent = False
+          end
+          object RLLabel4: TRLLabel
+            Left = 442
+            Top = 15
+            Width = 95
+            Height = 14
+            Caption = 'NOTA TRABALHO'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Transparent = False
+          end
+        end
+      end
+    end
+    object RLSubDetail2: TRLSubDetail
+      Left = 38
+      Top = 492
+      Width = 718
+      Height = 184
+      IntegralHeight = True
+      object RLBand7: TRLBand
+        Left = 0
+        Top = 0
+        Width = 718
+        Height = 57
+        BandType = btTitle
+        object RLLabel20: TRLLabel
+          Left = 3
+          Top = 21
+          Width = 116
+          Height = 18
+          Caption = 'Resumo geral'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBackground
+          Font.Height = -16
+          Font.Name = 'Georgia'
+          Font.Style = [fsBold]
+          ParentFont = False
+          Transparent = False
+        end
+        object RLDraw11: TRLDraw
+          Left = 3
+          Top = 45
+          Width = 710
+          Height = 1
+          Borders.Style = bsClear
+          Color = clWhite
+          ParentColor = False
+          Pen.Mode = pmXor
+        end
+      end
+      object RLGroup2: TRLGroup
+        Left = 0
+        Top = 57
+        Width = 718
+        Height = 77
+        IntegralHeight = True
+        object RLBand9: TRLBand
+          Left = 0
+          Top = 30
+          Width = 718
+          Height = 5
+          Background.Align = faTop
+          Background.Arrange = baDistributed
+          Background.AutoSize = False
+          IntegralHeight = False
+        end
+        object RLBand8: TRLBand
+          Left = 0
+          Top = 0
+          Width = 718
+          Height = 30
+          BandType = btHeader
+          object RLLabel21: TRLLabel
+            Left = 22
+            Top = 15
+            Width = 95
+            Height = 14
+            Caption = 'APROVA'#199#213'ES:'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = cl3DDkShadow
+            Font.Height = -11
+            Font.Name = 'Georgia'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Transparent = False
+          end
+        end
+        object RLBand10: TRLBand
+          Left = 0
+          Top = 35
+          Width = 718
+          Height = 32
+          BandType = btColumnFooter
+          Borders.Sides = sdCustom
+          Borders.DrawLeft = False
+          Borders.DrawTop = False
+          Borders.DrawRight = False
+          Borders.DrawBottom = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          ParentFont = False
+          object campo_resumo_valor_comissao_profissional: TRLDBResult
+            Left = 158
+            Top = 3
+            Width = 40
+            Height = 15
+            DisplayMask = '0.00'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clGreen
+            Font.Height = -12
+            Font.Name = 'Arial'
+            Font.Style = [fsBold]
+            Info = riSum
+            ParentFont = False
+            Text = ''
+          end
+          object RLLabel22: TRLLabel
+            Left = 22
+            Top = 6
+            Width = 102
+            Height = 14
+            Caption = 'REPROVA'#199#213'ES:'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clMaroon
+            Font.Height = -11
+            Font.Name = 'Georgia'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Transparent = False
+          end
+          object RLLabel28: TRLLabel
+            Left = 135
+            Top = 3
+            Width = 22
+            Height = 15
+            Caption = 'R$'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clGreen
+            Font.Height = -12
+            Font.Name = 'Georgia'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Transparent = False
+          end
+        end
+      end
+      object RLBand14: TRLBand
+        Left = 0
+        Top = 134
+        Width = 718
+        Height = 47
+        BandType = btFooter
+      end
+    end
+    object RLBand13: TRLBand
+      Left = 38
+      Top = 273
+      Width = 718
+      Height = 16
+    end
+    object RLSubDetail3: TRLSubDetail
+      Left = 38
+      Top = 676
+      Width = 718
+      Height = 184
+      IntegralHeight = True
+      object RLGroup3: TRLGroup
+        Left = 0
+        Top = 0
+        Width = 718
+        Height = 113
+        IntegralHeight = True
+        object RLBand11: TRLBand
+          Left = 0
+          Top = 0
+          Width = 718
+          Height = 57
+          BandType = btTitle
+          object RLDraw12: TRLDraw
+            Left = 24
+            Top = 45
+            Width = 689
+            Height = 1
+            Borders.Style = bsClear
+            Color = clWhite
+            ParentColor = False
+            Pen.Mode = pmXor
+          end
+        end
+        object RLBand12: TRLBand
+          Left = 0
+          Top = 57
+          Width = 718
+          Height = 4
+        end
+        object RLBand15: TRLBand
+          Left = 0
+          Top = 61
+          Width = 718
+          Height = 38
+          BandType = btColumnFooter
+          object RLLabel25: TRLLabel
+            Left = 25
+            Top = 2
+            Width = 165
+            Height = 14
+            Caption = 'Valor total de comandas:'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlue
+            Font.Height = -11
+            Font.Name = 'Georgia'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Transparent = False
+          end
+          object campo_valor_comandas_resumo: TRLDBResult
+            Left = 215
+            Top = 2
+            Width = 40
+            Height = 15
+            DisplayMask = '0.00'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clGreen
+            Font.Height = -12
+            Font.Name = 'Arial'
+            Font.Style = [fsBold]
+            Info = riSum
+            ParentFont = False
+            Text = ''
+          end
+          object RLLabel26: TRLLabel
+            Left = 25
+            Top = 22
+            Width = 163
+            Height = 14
+            Caption = 'Valor total de comiss'#245'es:'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clMaroon
+            Font.Height = -11
+            Font.Name = 'Georgia'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Transparent = False
+          end
+          object campo_resumo_valor_comissao: TRLDBResult
+            Left = 213
+            Top = 21
+            Width = 40
+            Height = 15
+            DisplayMask = '0.00'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clGreen
+            Font.Height = -12
+            Font.Name = 'Arial'
+            Font.Style = [fsBold]
+            Info = riSum
+            ParentFont = False
+            Text = ''
+          end
+          object RLLabel29: TRLLabel
+            Left = 192
+            Top = 2
+            Width = 22
+            Height = 15
+            Caption = 'R$'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clGreen
+            Font.Height = -12
+            Font.Name = 'Georgia'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Transparent = False
+          end
+          object RLLabel30: TRLLabel
+            Left = 190
+            Top = 21
+            Width = 22
+            Height = 15
+            Caption = 'R$'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clGreen
+            Font.Height = -12
+            Font.Name = 'Georgia'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Transparent = False
+          end
+        end
+      end
+    end
+    object RLBand16: TRLBand
+      Left = 38
+      Top = 38
+      Width = 718
+      Height = 19
+      BandType = btHeader
+      object RLLabel31: TRLLabel
+        Left = 617
+        Top = 0
+        Width = 53
+        Height = 16
+        Alignment = taRightJustify
+        Caption = 'P'#225'gina:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object RLSystemInfo2: TRLSystemInfo
+        Left = 673
+        Top = 0
+        Width = 39
+        Height = 16
+        Alignment = taCenter
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = []
+        Info = itPageNumber
+        ParentFont = False
+        Text = ''
+      end
+    end
+  end
+end

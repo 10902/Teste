@@ -1,0 +1,108 @@
+unit CDisciplina;
+
+interface
+
+Uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.ExtCtrls, Data.DB,
+  jpeg, UDisciplina, ddisciplina;
+
+type
+
+  TCDisciplina = class
+
+  private
+
+  PUBLIC
+
+    function CadastraDisciplina(descricao: string;
+      user_tualizacao: integer): boolean;
+
+    function UpdateDisciplina(id: integer; descricao: string;
+      user_tualizacao: integer; lista: TListView): boolean;
+    procedure ListarDisciplina(lista: TListView);
+    procedure ListaResumidaDisciplina(lista: TListView);
+
+  end;
+
+implementation
+
+{ TCDisciplina }
+
+uses UFuncoes;
+
+function TCDisciplina.CadastraDisciplina(descricao: string;
+  user_tualizacao: integer): boolean;
+var
+  d: TDisciplina;
+  f: TFuncoes;
+  dao: TDDisciplina;
+
+begin
+  Result := false;
+  d := TDisciplina.Create;
+  f := TFuncoes.Create;
+  d.descricao := descricao;
+  d.useratualizacao := user_tualizacao;
+  d.datacadastro := f.RetornaDataHoraBanco;
+  d.dataatualizacao := f.RetornaDataHoraBanco;
+
+  dao := TDDisciplina.Create;
+  if dao.CadastraDisciplina(d) then
+  begin
+    Result := True;
+  end;
+
+  FreeAndNil(d);
+  FreeAndNil(dao);
+  FreeAndNil(f);
+
+end;
+
+procedure TCDisciplina.ListarDisciplina(lista: TListView);
+var
+  d: TDDisciplina;
+begin
+  d := TDDisciplina.Create;
+  d.ListarDisciplina(lista);
+end;
+
+procedure TCDisciplina.ListaResumidaDisciplina(lista: TListView);
+var
+  d: TDDisciplina;
+begin
+  d := TDDisciplina.Create;
+  d.ListarDisciplina(lista);
+end;
+
+function TCDisciplina.UpdateDisciplina(id: integer; descricao: string;
+  user_tualizacao: integer; lista: TListView): boolean;
+var
+  d: TDisciplina;
+  f: TFuncoes;
+  dao: TDDisciplina;
+begin
+  Result := false;
+  d := TDisciplina.Create;
+  f := TFuncoes.Create;
+  d.id := id;
+  d.descricao := descricao;
+  d.useratualizacao := user_tualizacao;
+  d.datacadastro := f.RetornaDataHoraBanco;
+  d.dataatualizacao := f.RetornaDataHoraBanco;
+
+  dao := TDDisciplina.Create;
+  if dao.AlteraDisciplina(d) then
+  begin
+    Result := True;
+    ListarDisciplina(lista);
+  end;
+
+  FreeAndNil(d);
+  FreeAndNil(dao);
+  FreeAndNil(f);
+end;
+
+
+end.

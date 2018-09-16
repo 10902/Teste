@@ -1,0 +1,263 @@
+object tela_notas: Ttela_notas
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
+  Caption = 'Lan'#231'ar notas de alunos'
+  ClientHeight = 361
+  ClientWidth = 656
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  OnClose = FormClose
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 656
+    Height = 73
+    Align = alTop
+    Alignment = taLeftJustify
+    TabOrder = 0
+    ExplicitTop = -6
+    DesignSize = (
+      656
+      73)
+    object Label1: TLabel
+      Left = 8
+      Top = 15
+      Width = 42
+      Height = 16
+      Caption = 'Aluno:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 8
+      Top = 34
+      Width = 19
+      Height = 16
+      Caption = 'ID:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lb_aluno: TLabel
+      Left = 56
+      Top = 15
+      Width = 313
+      Height = 16
+      AutoSize = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clHighlight
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      StyleElements = [seBorder]
+    end
+    object lb_id: TLabel
+      Left = 31
+      Top = 34
+      Width = 42
+      Height = 16
+      AutoSize = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object img_relatorio: TImage
+      Left = 576
+      Top = 15
+      Width = 32
+      Height = 32
+      Anchors = [akTop, akRight]
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000200000
+        00200806000000737A7AF4000000017352474200AECE1CE90000000467414D41
+        0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000002
+        114944415478DA63641860C038E81CB0EBE0D33E5A5AE8662F5D84D701F357DC
+        FA4F4B072446A8A1D839EA00AC0E10E06363E0E06026C9E07F7F21EE6662C69E
+        AE7FFCF8CBF0E1D32FE21CA0AF25C42025C14592039EBDF806A671E903C95FBC
+        F68E4E0EF8F29D81818713CC675D7880E1AF8932C3136161D21CF0E9CB6F86ED
+        FB9E1065B9A7930C031F0F2B982DF3EF2703976B03C3CFD66806C6971F18D86B
+        9733FCEC886578E065411F07804280BD7E0503DBCC5DC084F19FE1676304C3AF
+        4C773A470110804281415288E1DBA23CB83C5D1D804D9E680790930D41D90C04
+        70E91B61D9100930DD7DC1F05F4A90E1E9C7BFA439808D8D89E1CEFD4F4459AE
+        A2C8C7F0EBD73F305B9A9F9981BD6C09C3AFF20006868FDF18B882BB187EC73A
+        30DC4FF624CD01F71E7D66983CF71A510EC84DD6625092E3853880FD3FD85286
+        379F18187FFC66F8A72BC7F07D493EE92140491430BEFFC2C0635CCAF09F9B9D
+        E1EBA94E86FF9CECF44F034CF75E3230087031FC13E285CB13ED0079191E0621
+        0176921CF0EEC34F308D4B1F48FEE1932F43C401542D0780F5010313237DD300
+        CBAE8B0C7F9C7519187FFD66E08C9BCCF0C7CB88E1812789B521B9D9105C1D5B
+        5632FC75D303E686AF0C4C971F317C5B5BCAF04444843E05112804980F5F67E0
+        0AEB6160606166F8BABD86E19F8E1CFDB321EBB4EDC0225888E14F80395C7EE8
+        54C724D94C2220E88001EF9AD11B0CB80300FAC59430D1281544000000004945
+        4E44AE426082}
+      OnClick = img_relatorioClick
+    end
+    object Label3: TLabel
+      Left = 573
+      Top = 51
+      Width = 43
+      Height = 13
+      Anchors = [akTop, akRight]
+      Caption = 'Relat'#243'rio'
+    end
+    object img_atualiza: TImage
+      Left = 512
+      Top = 15
+      Width = 32
+      Height = 32
+      Anchors = [akTop, akRight]
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000200000
+        00200806000000737A7AF4000000017352474200AECE1CE90000000467414D41
+        0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000004
+        274944415478DAD5976F68D55518C7BFCFB9DB4AC8E12CB76556CE1604B5EC85
+        5B92F826502382EA450BC1198EFCC3DAEE9D3671204B34451D8CED6EB87FB14A
+        31E88F080AA288D49BBDD07C9178AD246ADB0BA33F8E5A0B19B8ED1CBFBFDF3D
+        3F77FFFCEEB67B7745BCB0FDFE9CE73CDFCFF39C739E737E82FBFC930712C0EC
+        C06366028B79BB44047946E34FE421A25A70EB9E01E83A3C43EB8DFC7B939D96
+        27411954A9761CCF3A800EA288561FC1600BA3CD4999158517552B22BA1E8FD3
+        76A98C63503A9999B900D0D92A689CA470E19412FE3382B3BCFB919D6F445FE1
+        091943B3F4629CC02F88A888CDCA1815067937C0C7211819109141A327BF551D
+        189D168029AF84C2311A3C649D394E9AA40027642F6EA7CCC41EE4987FD528A1
+        E7F9B6C3744BD8D488CB9D0280E2AFB0E53B678259F12E0AD74F271CD73FA4BE
+        A7E3721FF1568A7FE889FB02D8318FB0619115DFC1C9D53A1BE12900E911C896
+        98378E9F5B942D61EA6FC6DA26038470842F6BBCC8295E938EB8CDC056FAE8F6
+        E2F602E6FFE32A8CAA9400EE5253F8992F73693C280BF0DC6CD39E10C4CB0275
+        D1389A1ABB21BA9AC359CA8026787D56C29C90BE0041EC1567C939B4820DAA0D
+        5FA42BEEFAD9CE0938A99C591E52EDBA93401B2974D466A1855968F00708E18A
+        5B64B8D45080C24CA29FCA6660ADEA983CEF8ABA2B037F31B88504B84680B224
+        00FD011E951C0C5BCA2F69B43E53F114C3F215C52ADD61C94131CBF6DFF100B5
+        582E015CB1004D04D89F65805D143BE4FA37A8E0E4BE1C0F10C23A3E9CB306D5
+        34F82CAB00416CE2107CEAFA17BCC1F975261E2088D76970E69E0184504DB13E
+        4455D7481B2EC403D4638598685A38048D1C82C359CE401303DCE7FAD7789E05
+        E9A778803A563EC5991A7DF70DD76A6536014C085FF3F20E839B646D58E8BB19
+        91F22A29CB3804FFB0F61771194E44E1A6965446D1D7714313DCA4EFF904E867
+        76577B6D8900CD34DA691F37310B9FEBA0724A7118019DCFFD7E2C2380D84264
+        D0C0F9D5E20F508B120EC32FCEC183A4BF41AB3E3E1F708685357525C92FA59D
+        FAF7F0B05980EBF4F134C5FF472E4ABD1A900460B370549CA3D7DDE6A80981B6
+        A9B0EE493BFA203EA1BFF7AD8F3D0C625F6C7B324074320EB0E1917800D3ABC2
+        666B5AD107D1C8EE07ADF87556C0158907D73800E3A43A242DDCCBB72739032E
+        330315B38ADADD8C1066E49BDDBE062308A09C73E8D7445B891170C43B29BECD
+        371A9EEFA440E77B2BC357D899ED0AEFF2F6633A7ECAF61BE6FDDBD28E7EBF3E
+        B175205F54E055634C095196F1D552362F734E31DEF9CE185DC6197CCD0A35B0
+        F3EF56E449BB7C5F73965A0C744414DE62D51B48053DABEF0253836293CB1522
+        18620DFF8345E525BEFE21A5BD7177D5FDAC255D336DE9197D193103558CEC58
+        82E8082F1798B1D3BC9EF22ADD4CBF8CBF0DDDF383609109B8FBFB8D4C3ECBE6
+        0490ADDF7D07B80303588830569A0B000000000049454E44AE426082}
+      OnClick = img_atualizaClick
+    end
+    object Label4: TLabel
+      Left = 509
+      Top = 51
+      Width = 42
+      Height = 13
+      Anchors = [akTop, akRight]
+      Caption = 'Atualizar'
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 319
+    Width = 656
+    Height = 42
+    Align = alBottom
+    Alignment = taLeftJustify
+    TabOrder = 1
+    object DBNavigator1: TDBNavigator
+      Left = 0
+      Top = 6
+      Width = 216
+      Height = 25
+      VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbEdit, nbPost]
+      TabOrder = 0
+      BeforeAction = DBNavigator1BeforeAction
+    end
+  end
+  object DBGrid1: TDBGrid
+    Left = 0
+    Top = 73
+    Width = 656
+    Height = 246
+    Align = alClient
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 2
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    StyleElements = [seBorder]
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'disciplina'
+        Title.Caption = 'ID'
+        Width = 40
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'descricao'
+        Title.Caption = 'DISCIPLINA'
+        Width = 250
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'nota_1'
+        Title.Alignment = taCenter
+        Title.Caption = 'NOTA 1'
+        Width = 80
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'nota_2'
+        Title.Alignment = taCenter
+        Title.Caption = 'NOTA 2'
+        Width = 80
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'nota_trabalho'
+        Title.Alignment = taCenter
+        Title.Caption = 'NOTA TRABALHO'
+        Width = 100
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'media'
+        Title.Alignment = taCenter
+        Title.Caption = 'MEDIA'
+        Visible = True
+      end>
+  end
+end

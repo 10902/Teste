@@ -1,0 +1,227 @@
+unit CProfessor;
+
+interface
+
+Uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.ExtCtrls, Data.DB,
+  jpeg, Uprofessor, Dprofessor, Vcl.DBGrids;
+
+type
+
+  TCProfessor = class
+
+  private
+
+  PUBLIC
+
+    function CadastraProfessor(nome: string; idade: integer;
+      sexo, cpf, cidade, bairro, endereco, cep, uf, numero, telefone,
+      email: string; user_tualizacao: integer; lista: TListView): boolean;
+    function VinculaDisciplinas(professor, disciplina, user: integer;
+      lista: TListView): boolean;
+    function DesvincularDisciplina(professor, user, disciplina: integer;
+      lista: TListView): boolean;
+    function UpdateProfessor(id: integer; nome: string; idade: integer;
+      sexo, cpf, cidade, bairro, endereco, cep, uf, numero, telefone,
+      email: string; user_tualizacao: integer; lista: TListView): boolean;
+
+    procedure ListarProfessores(lista: TListView);
+    procedure ListarDisciplinas(professor:integer;lista: TListView);
+    function Ativar_inativarProfessor(id, user: integer;
+      lista: TListView): boolean;
+
+  end;
+
+implementation
+
+{ TCProfessor }
+
+uses UFuncoes;
+
+function TCProfessor.Ativar_inativarProfessor(id, user: integer;
+  lista: TListView): boolean;
+var
+  p: TProfessor;
+  d: TDprofessor;
+  data_atualizacao: TDateTime;
+begin
+  Result := false;
+  p := TProfessor.Create;
+  p.id := id;
+  p.useratualizacao := user;
+  p.dataatualizacao := now;
+  d := TDprofessor.Create;
+  if d.Ativar_inativarProfessor(p) then
+  begin
+    Result := true;
+    ListarProfessores(lista);
+  end;
+  FreeAndNil(p);
+  FreeAndNil(d);
+end;
+
+function TCProfessor.CadastraProfessor(nome: string; idade: integer;
+  sexo, cpf, cidade, bairro, endereco, cep, uf, numero, telefone, email: string;
+  user_tualizacao: integer; lista: TListView): boolean;
+var
+  p: TProfessor;
+  d: TDprofessor;
+  f: TFuncoes;
+  dt_cadastro, dt_atualizacao: TDateTime;
+begin
+
+  Result := false;
+  p := TProfessor.Create;
+  f := TFuncoes.Create;
+
+  // ShowMessage(DateTimeToStr(f.RetornaDataHoraBanco));
+  p.nome := nome;
+  p.idade := idade;
+  p.sexo := sexo;
+  p.cpf := cpf;
+  p.cidade := cidade;
+  p.bairro := bairro;
+  p.endereco := endereco;
+  p.cep := cep;
+  p.uf := uf;
+  p.numero := numero;
+
+  p.telefone := telefone;
+  p.email := email;
+  p.useratualizacao := user_tualizacao;
+  p.datacadastro := f.RetornaDataHoraBanco;
+  p.dataatualizacao := f.RetornaDataHoraBanco;
+
+
+  // chama funcao de cadastrar no DAO
+
+  d := TDprofessor.Create;
+  if d.CadastraProfessor(p) then
+  begin
+    Result := true;
+    ListarProfessores(lista);
+  end;
+  FreeAndNil(p);
+  FreeAndNil(d);
+  FreeAndNil(f);
+
+end;
+
+function TCProfessor.DesvincularDisciplina(professor, user, disciplina: integer;
+  lista: TListView): boolean;
+var
+  d: TProfessor;
+  f: TFuncoes;
+  dao: TDprofessor;
+begin
+  Result := false;
+  d := TProfessor.Create;
+  f := TFuncoes.Create;
+  d.id := professor;
+  d.status:=0;
+  d.useratualizacao := user;
+  d.datacadastro := f.RetornaDataHoraBanco;
+  d.dataatualizacao := f.RetornaDataHoraBanco;
+
+  dao := TDprofessor.Create;
+  if dao.DesvincularDisciplina(d, disciplina) then
+  begin
+    Result := true;
+    ListarDisciplinas(professor,lista);
+
+  end;
+
+  FreeAndNil(d);
+  FreeAndNil(dao);
+  FreeAndNil(f);
+end;
+
+procedure TCProfessor.ListarDisciplinas(professor:integer;lista: TListView);
+var
+  d: TDprofessor;
+begin
+  d := TDprofessor.Create;
+  d.ListarDisciplinas(professor, lista);
+end;
+
+procedure TCProfessor.ListarProfessores(professor:integer;lista: TListView);
+var
+  d: TDprofessor;
+begin
+  d := TDprofessor.Create;
+  d.ListarProfessor(lista);
+end;
+
+function TCProfessor.UpdateProfessor(id: integer; nome: string; idade: integer;
+  sexo, cpf, cidade, bairro, endereco, cep, uf, numero, telefone, email: string;
+  user_tualizacao: integer; lista: TListView): boolean;
+var
+  p: TProfessor;
+  f: TFuncoes;
+  d: TDprofessor;
+  dt_cadastro, dt_atualizacao: tdate;
+begin
+  Result := false;
+  p := TProfessor.Create;
+  f := TFuncoes.Create;
+  p.id := id;
+  p.nome := nome;
+  p.idade := idade;
+  p.sexo := sexo;
+  p.cpf := cpf;
+  p.cidade := cidade;
+  p.bairro := bairro;
+  p.endereco := endereco;
+  p.cep := cep;
+  p.uf := uf;
+  p.numero := numero;
+  p.telefone := telefone;
+  p.email := email;
+
+  p.useratualizacao := user_tualizacao;
+  p.datacadastro := f.RetornaDataHoraBanco;
+  p.dataatualizacao := f.RetornaDataHoraBanco;
+
+  d := TDprofessor.Create;
+  if d.AlteraProfessor(p) then
+  begin
+    Result := true;
+    ListarProfessores(lista);
+  end;
+  // chama funcao de cadastrar no DAO
+
+  FreeAndNil(p);
+  FreeAndNil(d);
+  FreeAndNil(f);
+end;
+
+function TCProfessor.VinculaDisciplinas(professor, disciplina, user: integer;
+  lista: TListView): boolean;
+var
+  d: TProfessor;
+  f: TFuncoes;
+  dao: TDprofessor;
+begin
+  Result := false;
+  d := TProfessor.Create;
+  f := TFuncoes.Create;
+  d.id := professor;
+  d.useratualizacao := user;
+  d.datacadastro := f.RetornaDataHoraBanco;
+  d.dataatualizacao := f.RetornaDataHoraBanco;
+
+  dao := TDprofessor.Create;
+  if dao.VinculaDisciplinas(d, disciplina) then
+  begin
+    Result := true;
+
+  end;
+
+  FreeAndNil(d);
+  FreeAndNil(dao);
+  FreeAndNil(f);
+end;
+
+end.

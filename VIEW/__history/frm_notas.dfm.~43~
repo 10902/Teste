@@ -1,0 +1,176 @@
+object tela_notas: Ttela_notas
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
+  Caption = 'Lan'#231'ar notas de alunos'
+  ClientHeight = 361
+  ClientWidth = 656
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  OnClose = FormClose
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 656
+    Height = 73
+    Align = alTop
+    Alignment = taLeftJustify
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 8
+      Top = 15
+      Width = 42
+      Height = 16
+      Caption = 'Aluno:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 8
+      Top = 34
+      Width = 19
+      Height = 16
+      Caption = 'ID:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lb_aluno: TLabel
+      Left = 56
+      Top = 15
+      Width = 313
+      Height = 16
+      AutoSize = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clHighlight
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      StyleElements = [seBorder]
+    end
+    object lb_id: TLabel
+      Left = 31
+      Top = 34
+      Width = 42
+      Height = 16
+      AutoSize = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Button2: TButton
+      Left = 294
+      Top = 25
+      Width = 75
+      Height = 25
+      Caption = 'Button2'
+      TabOrder = 0
+      OnClick = Button2Click
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 319
+    Width = 656
+    Height = 42
+    Align = alBottom
+    Alignment = taLeftJustify
+    TabOrder = 1
+    object DBNavigator1: TDBNavigator
+      Left = 0
+      Top = 6
+      Width = 216
+      Height = 25
+      VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbEdit, nbPost]
+      TabOrder = 0
+      BeforeAction = DBNavigator1BeforeAction
+    end
+  end
+  object DBGrid1: TDBGrid
+    Left = 0
+    Top = 73
+    Width = 656
+    Height = 246
+    Align = alClient
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 2
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    StyleElements = [seBorder]
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'disciplina'
+        Title.Caption = 'ID'
+        Width = 40
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'descricao'
+        Title.Caption = 'DISCIPLINA'
+        Width = 250
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'nota_1'
+        Title.Alignment = taCenter
+        Title.Caption = 'NOTA 1'
+        Width = 80
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'nota_2'
+        Title.Alignment = taCenter
+        Title.Caption = 'NOTA 2'
+        Width = 80
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'data_trabalho'
+        Title.Alignment = taCenter
+        Title.Caption = 'NOTA TRABALHO'
+        Width = 100
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'media'
+        Title.Alignment = taCenter
+        Title.Caption = 'MEDIA'
+        Visible = True
+      end>
+  end
+end

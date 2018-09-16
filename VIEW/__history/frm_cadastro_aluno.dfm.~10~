@@ -1,0 +1,814 @@
+object tela_cadastra_Aluno: Ttela_cadastra_Aluno
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Cadastro Aluno'
+  ClientHeight = 431
+  ClientWidth = 769
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  OnClose = FormClose
+  DesignSize = (
+    769
+    431)
+  PixelsPerInch = 96
+  TextHeight = 13
+  object lb_codigoCliente: TLabel
+    Left = 43
+    Top = 88
+    Width = 51
+    Height = 16
+    Caption = 'C'#211'DIGO:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    StyleElements = [seBorder]
+  end
+  object lb_NomeCliente: TLabel
+    Left = 184
+    Top = 88
+    Width = 39
+    Height = 16
+    Caption = 'NOME:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    StyleElements = [seBorder]
+  end
+  object Label3: TLabel
+    Left = 236
+    Top = 143
+    Width = 27
+    Height = 16
+    Caption = 'CPF:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    StyleElements = [seBorder]
+  end
+  object Label4: TLabel
+    Left = 42
+    Top = 141
+    Width = 40
+    Height = 16
+    Caption = 'IDADE:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    StyleElements = [seBorder]
+  end
+  object Label6: TLabel
+    Left = 394
+    Top = 279
+    Width = 27
+    Height = 16
+    Caption = 'CEP:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    StyleElements = [seBorder]
+  end
+  object Label7: TLabel
+    Left = 43
+    Top = 216
+    Width = 48
+    Height = 16
+    Caption = 'CIDADE:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    StyleElements = [seBorder]
+  end
+  object Label8: TLabel
+    Left = 277
+    Top = 279
+    Width = 55
+    Height = 16
+    Caption = 'N'#218'MERO:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    StyleElements = [seBorder]
+  end
+  object Label9: TLabel
+    Left = 520
+    Top = 279
+    Width = 53
+    Height = 16
+    Caption = 'ESTADO:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label10: TLabel
+    Left = 43
+    Top = 279
+    Width = 49
+    Height = 16
+    Caption = 'BAIRRO:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    StyleElements = [seBorder]
+  end
+  object Label11: TLabel
+    Left = 43
+    Top = 346
+    Width = 40
+    Height = 16
+    Caption = 'FONE :'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    StyleElements = [seBorder]
+  end
+  object Label13: TLabel
+    Left = 162
+    Top = 346
+    Width = 40
+    Height = 16
+    Caption = 'EMAIL:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    StyleElements = [seBorder]
+  end
+  object Image1: TImage
+    Left = 678
+    Top = 80
+    Width = 31
+    Height = 32
+    Cursor = crHandPoint
+    Picture.Data = {
+      0954506E67496D61676589504E470D0A1A0A0000000D49484452000000200000
+      0020080300000044A48AC60000000467414D410000B18F0BFC61050000012950
+      4C54450000008EE3558FDF5895D55591DC5A91DC5A91DC5A92DD5B92DB5B91DD
+      5A91DC5A91DD5B92DC5A92DB5B8EE35591DC5A91DC5992DC5991DC5A9FDF608F
+      DF6091DC5A8ED95E91DC5991DC5A91DC5B90DD5990DC5A92DD5B91DC5A91DC5A
+      90DC5A90DB5A90DB5A90DE598FDA5792DB5B91DC5A91DC5A91DD5A90DB59FFFF
+      008EDC5C90DC5B92DD5A90DD5B90DC5B94DD5791DB5A92DC5A91DC5A93DF59AA
+      FF5591DC5A91DB5991DC5A90DB5A92DE5A91DC5A92DC5A91DD5A92DC5991DC5A
+      92DC5A91DC5A91DC5A8DDC5892DC5A91DB5A91DC5A91DC5A90DC5A91DD5A90DB
+      5999CC6691DC5A90DC5A8CD95992DC5A91DB5992DB5891DD5E93DC5B97DC5D91
+      DC5A91DC5A92DB4991DC5A91DC5B91DD5A92DC5992DC5990DA5891DC5A91DC5A
+      92DD5980D55591DC5A000000BC9B0E8A0000006174524E530012200C8BFCF562
+      0E8DC7C8B84609F9D375EC0810E01B48BB5F53E970FBE8C47A4717295497FAF4
+      6A01248AAA35572680AF7D2803F364F65536EAC6B9B1E5E2EBDC1DA84FDD90BD
+      4A8F05FE6C146072311E3B16BCFD0741E7DE9A6737C3DF59066DC217C0000000
+      01624B47440088051D48000000097048597300000DD700000DD70142289B7800
+      00000774494D4507E1050711140077B1CB5C000001494944415478DA63642000
+      18C953C0081666FC8B4B010B630C885ACAF813A2808311043EC3E5F91883208C
+      F51F200A040380C446C6B7300522BE50C696D72005628C8C9E20DE8E7F3005CC
+      EE50C6AE3FFF5F31CA30BAE0F1C39EFF8C72CE787DB99731915038A028D8C708
+      01D6D8151C6364BC0E666831329A6251B051E21A9CAD6B8245C1D94B0C0CFA20
+      0BCE32309830EA6028387D8581C18C510BC8BA7E8241F3931B86826D2F192C9F
+      80C3E42623E395404C2B0EDE63B055C1E3CDBB871818EC95F028B87F8081C151
+      015F403DDCC7E02C874FC1E33D0CFAD7A3C1CC278CFF6530153C7B749DC1E332
+      C8772F18B7194B886106D4EB2D0C0CBE8C3F3819373030040A6009C9A53EEB60
+      CC60465E6C91F5E59AF62A30239C91136B6C3230FC00C6C4BE57913F78187028
+      C00218E398F1CAFF658C7FA88847FEBE3C2343C2223C0AE21690997991000000
+      3551EAB01AADEC0000002574455874646174653A63726561746500323031372D
+      30352D30375431373A32303A30302B30323A3030CECA82240000002574455874
+      646174653A6D6F6469667900323031372D30352D30375431373A32303A30302B
+      30323A3030BF973A980000001974455874536F667477617265007777772E696E
+      6B73636170652E6F72679BEE3C1A0000000049454E44AE426082}
+  end
+  object Image2: TImage
+    Left = 678
+    Top = 118
+    Width = 31
+    Height = 32
+    Cursor = crHandPoint
+    Picture.Data = {
+      0954506E67496D61676589504E470D0A1A0A0000000D49484452000000200000
+      0020080300000044A48AC60000000467414D410000B18F0BFC6105000000BA50
+      4C5445000000D70028D60029D90026D80027DA0025D80027D80027D80027D800
+      27D70028D70028D60029D5002BD70028D90026D80027D70028D70028D80027D8
+      0027D80027D70028D90026D80027D80027D80027D90026D70028D80027D80027
+      D80027DA0025DB0024D80027E3001CD90026D70028D70028D80027DB0024D800
+      27D80027D80027D80027D70028D80027D80027D70028D80027D80027DA0025D7
+      0028D80027DA0026D80027D80027D80027D80027D90026D8002700000085FE8F
+      F10000003C74524E53008025A0E030EC98DDFE9A4C191E5A9FE54052F427B8B4
+      28E3FCA46B3921EBD73715A809369433BF31EA9EFDDE3AAAE920EFE629C1B122
+      9CD0F0C399B50F24C400000001624B47440088051D4800000009704859730000
+      0DD700000DD70142289B780000000774494D4507E10507111302D6FE3CB70000
+      013A4944415478DA9593ED4BC33010C6F388B28A169C730CB6566A3B29FBEC0B
+      C2FCF78752ED1CA22083BAC2AC5FFCE0743A98A8318D752469D6E2412F49EF07
+      B9BB27075262F80F806EB6E9512DB0884B0474719180362E10202BC0C99204CF
+      29FDC61A8E0B6A08282A4785555EC0382C042E712A9C4270FB38109B23003778
+      E6EB363A5A20347EE36407BE16E8CFF862AE4F975C71F59EFA06DA11CB83504A
+      3D0518BC316763778C989F1D6ACB403262CE6D8E57A3EC87F7694BC02DCBB19D
+      6C5562D67FCA3F67EE89C0D91721FB8DFBC754B71EE9A67A355D1188CC21F1EB
+      A3E44F5806B4F6A44605EE5DA7163F64D2A7825B8E0490A88A6A0E50C552AE98
+      E4E45692ECE71E4C2497F9927F7252A35EAFD5C1B1376B42ABA718E426CBAA6F
+      2CC49A21D48C9EE91BD96E8E403F9B560B482C3C0DB9DCA4C44A811F3F797168
+      6BDE92340000002574455874646174653A63726561746500323031372D30352D
+      30375431373A31393A30322B30323A30303CA2DEC60000002574455874646174
+      653A6D6F6469667900323031372D30352D30375431373A31393A30322B30323A
+      30304DFF667A0000001974455874536F667477617265007777772E696E6B7363
+      6170652E6F72679BEE3C1A0000000049454E44AE426082}
+    Stretch = True
+  end
+  object Label5: TLabel
+    Left = 254
+    Top = 216
+    Width = 67
+    Height = 16
+    Caption = 'ENDERE'#199'O:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    StyleElements = [seBorder]
+  end
+  object lb_campoObrigatorioNome: TLabel
+    Left = 347
+    Top = 138
+    Width = 94
+    Height = 14
+    Caption = '(campo obrigat'#243'rio)'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    StyleElements = [seBorder]
+  end
+  object Label1: TLabel
+    Left = 117
+    Top = 218
+    Width = 94
+    Height = 14
+    Caption = '(campo obrigat'#243'rio)'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    StyleElements = [seBorder]
+  end
+  object Label14: TLabel
+    Left = 410
+    Top = 218
+    Width = 94
+    Height = 14
+    Caption = '(campo obrigat'#243'rio)'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    StyleElements = [seBorder]
+  end
+  object Label15: TLabel
+    Left = 146
+    Top = 281
+    Width = 94
+    Height = 14
+    Caption = '(campo obrigat'#243'rio)'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    StyleElements = [seBorder]
+  end
+  object Label16: TLabel
+    Left = 579
+    Top = 281
+    Width = 94
+    Height = 14
+    Caption = '(campo obrigat'#243'rio)'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    StyleElements = [seBorder]
+  end
+  object lb_cod_estado: TLabel
+    Left = 602
+    Top = 331
+    Width = 20
+    Height = 13
+    AutoSize = False
+  end
+  object Label2: TLabel
+    Left = 549
+    Top = 235
+    Width = 101
+    Height = 14
+    Caption = 'somente imagens jpg'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    StyleElements = [seBorder]
+  end
+  object Label12: TLabel
+    Left = 146
+    Top = 141
+    Width = 37
+    Height = 16
+    Caption = 'SEXO:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    StyleElements = [seBorder]
+  end
+  object Label17: TLabel
+    Left = 371
+    Top = 346
+    Width = 73
+    Height = 16
+    Caption = 'MATRICULA:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    StyleElements = [seBorder]
+  end
+  object edit_id: TEdit
+    Left = 42
+    Top = 108
+    Width = 87
+    Height = 24
+    CharCase = ecUpperCase
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    NumbersOnly = True
+    ParentFont = False
+    TabOrder = 0
+    StyleElements = [seBorder]
+  end
+  object edit_nome: TEdit
+    Left = 184
+    Top = 108
+    Width = 246
+    Height = 24
+    CharCase = ecUpperCase
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+    StyleElements = [seBorder]
+  end
+  object Panel1: TPanel
+    Left = 520
+    Top = 80
+    Width = 142
+    Height = 152
+    BevelOuter = bvNone
+    Caption = 'foto (150 x 150)'
+    Color = clInactiveCaption
+    ParentBackground = False
+    TabOrder = 2
+    StyleElements = []
+    object image_cliente: TImage
+      Left = 0
+      Top = 0
+      Width = 152
+      Height = 152
+      Stretch = True
+    end
+  end
+  object GroupBox15: TGroupBox
+    Left = 611
+    Top = 44
+    Width = 126
+    Height = 30
+    TabOrder = 3
+    object Label67: TLabel
+      Left = 8
+      Top = 6
+      Width = 35
+      Height = 13
+      Caption = 'Status:'
+    end
+    object lb_status: TLabel
+      Left = 48
+      Top = 6
+      Width = 73
+      Height = 16
+      AutoSize = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlue
+      Font.Height = -16
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Font.Quality = fqProof
+      ParentFont = False
+      StyleElements = []
+    end
+  end
+  object GroupBox14: TGroupBox
+    Left = 502
+    Top = 8
+    Width = 231
+    Height = 30
+    TabOrder = 4
+    object lb_usuario_alteracao: TLabel
+      Left = 62
+      Top = 5
+      Width = 172
+      Height = 17
+      AutoSize = False
+      Caption = 'xxxxxxxxxxx'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clPurple
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Font.Quality = fqProof
+      ParentFont = False
+      StyleElements = []
+    end
+    object Label66: TLabel
+      Left = 8
+      Top = 6
+      Width = 40
+      Height = 13
+      Caption = 'Usu'#225'rio:'
+    end
+  end
+  object GroupBox13: TGroupBox
+    Left = 256
+    Top = 8
+    Width = 232
+    Height = 30
+    TabOrder = 5
+    object lb_dat_alteracao: TLabel
+      Left = 110
+      Top = 5
+      Width = 125
+      Height = 17
+      AutoSize = False
+      Caption = '__/__/__ 00:00:00'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clTeal
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Font.Quality = fqProof
+      ParentFont = False
+      StyleElements = []
+    end
+    object Label61: TLabel
+      Left = 8
+      Top = 6
+      Width = 90
+      Height = 13
+      Caption = #218'ltima atualiza'#231#227'o:'
+    end
+  end
+  object GroupBox12: TGroupBox
+    Left = 8
+    Top = 8
+    Width = 230
+    Height = 30
+    TabOrder = 6
+    object lb_dat_cadastro: TLabel
+      Left = 102
+      Top = 5
+      Width = 130
+      Height = 17
+      AutoSize = False
+      Caption = '__/__/__ 00:00:00'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlue
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Font.Quality = fqProof
+      ParentFont = False
+      StyleElements = []
+    end
+    object Label55: TLabel
+      Left = 8
+      Top = 6
+      Width = 78
+      Height = 13
+      Caption = 'Data. Cadastro:'
+    end
+  end
+  object edit_cpf: TMaskEdit
+    Left = 236
+    Top = 165
+    Width = 112
+    Height = 21
+    EditMask = '!999.999.999-00;1;_'
+    MaxLength = 14
+    TabOrder = 7
+    Text = '   .   .   -  '
+  end
+  object edit_cidade: TEdit
+    Left = 42
+    Top = 238
+    Width = 161
+    Height = 24
+    CharCase = ecUpperCase
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 8
+    StyleElements = [seClient, seBorder]
+  end
+  object edit_endereco: TEdit
+    Left = 254
+    Top = 238
+    Width = 242
+    Height = 24
+    CharCase = ecUpperCase
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 9
+    StyleElements = [seClient, seBorder]
+  end
+  object edit_bairro: TEdit
+    Left = 43
+    Top = 301
+    Width = 189
+    Height = 24
+    CharCase = ecUpperCase
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 10
+    StyleElements = [seClient, seBorder]
+  end
+  object edit_numero: TEdit
+    Left = 277
+    Top = 301
+    Width = 71
+    Height = 24
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = []
+    NumbersOnly = True
+    ParentFont = False
+    TabOrder = 11
+    StyleElements = [seClient, seBorder]
+  end
+  object edit_cep: TMaskEdit
+    Left = 394
+    Top = 301
+    Width = 81
+    Height = 24
+    EditMask = '00000\-999;1;_'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = []
+    MaxLength = 9
+    ParentFont = False
+    TabOrder = 12
+    Text = '     -   '
+    StyleElements = [seClient, seBorder]
+  end
+  object cb_estados: TComboBox
+    Left = 520
+    Top = 301
+    Width = 105
+    Height = 24
+    Style = csDropDownList
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 13
+    StyleElements = [seClient, seBorder]
+    Items.Strings = (
+      'AC'
+      'AL'
+      'AP'
+      'AM'
+      'BA'
+      'CE'
+      'DF'
+      'ES'
+      'GO'
+      'MA'
+      'MT'
+      'MS'
+      'MG'
+      'PA'
+      'PB'
+      'PR'
+      'PE'
+      'PI'
+      'RJ'
+      'RN'
+      'RS'
+      'RO'
+      'RR'
+      'SC'
+      'SP'
+      'SE'
+      'TO')
+  end
+  object edit_fone: TMaskEdit
+    Left = 42
+    Top = 368
+    Width = 96
+    Height = 24
+    EditMask = '!\(99\)0000-0000;1;_'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = []
+    MaxLength = 13
+    ParentFont = False
+    TabOrder = 14
+    Text = '(  )    -    '
+    StyleElements = [seClient, seBorder]
+  end
+  object edit_email: TEdit
+    Left = 162
+    Top = 368
+    Width = 189
+    Height = 24
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 15
+    StyleElements = [seClient, seBorder]
+  end
+  object btn_confirma: TButton
+    Left = 662
+    Top = 372
+    Width = 85
+    Height = 42
+    Cursor = crHandPoint
+    Anchors = [akTop, akRight]
+    Caption = 'Cadastrar'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 16
+    StyleElements = [seClient, seBorder]
+    OnClick = btn_confirmaClick
+  end
+  object btn_cancela: TButton
+    Left = 566
+    Top = 372
+    Width = 85
+    Height = 42
+    Cursor = crHandPoint
+    Anchors = [akTop, akRight]
+    Caption = 'Cancelar'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -15
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 17
+  end
+  object edit_idade: TEdit
+    Left = 42
+    Top = 163
+    Width = 74
+    Height = 24
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = []
+    NumbersOnly = True
+    ParentFont = False
+    TabOrder = 18
+    StyleElements = [seClient, seBorder]
+  end
+  object cb_sexo: TComboBox
+    Left = 146
+    Top = 163
+    Width = 62
+    Height = 24
+    Style = csDropDownList
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 19
+    StyleElements = [seClient, seBorder]
+    Items.Strings = (
+      'F'
+      'M')
+  end
+  object edit_matricula: TEdit
+    Left = 371
+    Top = 368
+    Width = 125
+    Height = 24
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 20
+    StyleElements = [seClient, seBorder]
+  end
+  object OpenPictureDialog1: TOpenPictureDialog
+    Filter = 'JPEG Image File (*.jpg)|*.jpg|JPEG Image File (*.jpeg)|*.jpeg'
+    Left = 696
+    Top = 240
+  end
+  object OpenPictureDialog2: TOpenPictureDialog
+    Filter = 
+      'All (*.gif;*.png;*.jpg;*.jpeg;*.bmp;*.jpg;*.jpeg;*.gif;*.png;*.t' +
+      'if;*.tiff;*.ico;*.emf;*.wmf)|*.gif;*.png;*.jpg;*.jpeg;*.bmp;*.jp' +
+      'g;*.jpeg;*.gif;*.png;*.tif;*.tiff;*.ico;*.emf;*.wmf|GIF Image (*' +
+      '.gif)|*.gif|Portable Network Graphics (*.png)|*.png|JPEG Image F' +
+      'ile (*.jpg)|*.jpg|JPEG Image File (*.jpeg)|*.jpeg|Bitmaps (*.bmp' +
+      ')|*.bmp|JPEG Images (*.jpg)|*.jpg|JPEG Images (*.jpeg)|*.jpeg|PN' +
+      'G Images (*.png)| *.png'
+    Left = 459
+    Top = 56
+  end
+end

@@ -1,0 +1,24 @@
+program ProjetoUniversidade;
+
+uses
+  Vcl.Forms,
+  frm_principal in 'frm_principal.pas' {Form2},
+  Upessoa in '..\MODELO\Upessoa.pas',
+  UProfessor in '..\MODELO\UProfessor.pas',
+  UAluno in '..\MODELO\UAluno.pas',
+  CProfessor in '..\CONTROLE\CProfessor.pas',
+  UFuncoes in '..\MODELO\UFuncoes.pas',
+  data_module in 'data_module.pas' {DM: TDataModule},
+  CAluno in '..\CONTROLE\CAluno.pas',
+  UDisciplina in '..\MODELO\UDisciplina.pas',
+  CDisciplina in '..\CONTROLE\CDisciplina.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TForm2, Form2);
+  Application.CreateForm(TDM, DM);
+  Application.Run;
+end.

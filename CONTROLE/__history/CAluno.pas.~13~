@@ -1,0 +1,133 @@
+unit CAluno;
+
+interface
+
+Uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.ExtCtrls, Data.DB,
+  jpeg, UAluno, DAluno, Vcl.DBGrids;
+
+type
+
+  TCAluno = class
+
+  private
+
+  PUBLIC
+
+    function CadastraAluno(nome: string; idade: integer;
+      sexo, cpf,matricula,cidade, bairro, endereco, cep, uf, numero, telefone,
+      email: string; user_tualizacao: integer): boolean;
+
+    function UpdateAluno(id: integer; nome: string; idade: integer;
+      sexo, cpf, cidade, bairro, endereco, cep, uf, numero, telefone,
+      email: string; user_tualizacao: integer): boolean;
+
+    procedure ListarAlunoes(lista: TListView);
+
+  end;
+
+implementation
+
+{ TCAluno }
+
+uses UFuncoes;
+
+function TCAluno.CadastraAluno(nome: string; idade: integer;
+  sexo, cpf, cidade, bairro, endereco, cep, uf, numero, telefone, email: string;
+  user_tualizacao: integer): boolean;
+var
+  p: TAluno;
+  d: TDAluno;
+  f: TFuncoes;
+  dt_cadastro, dt_atualizacao: TDateTime;
+begin
+
+  Result := false;
+  p := TAluno.Create;
+  f := TFuncoes.Create;
+
+  // ShowMessage(DateTimeToStr(f.RetornaDataHoraBanco));
+  p.nome := nome;
+  p.idade := idade;
+  p.sexo := sexo;
+  p.cpf := cpf;
+  p.cidade := cidade;
+  p.bairro := bairro;
+  p.endereco := endereco;
+  p.CEP:=cep;
+  p.uf := uf;
+  p.numero := numero;
+
+  p.telefone := telefone;
+  p.email := email;
+  p.useratualizacao := user_tualizacao;
+  p.datacadastro := f.RetornaDataHoraBanco;
+  p.dataatualizacao := f.RetornaDataHoraBanco;
+
+
+  // chama funcao de cadastrar no DAO
+
+  d := TDAluno.Create;
+  if d.CadastraAluno(p) then
+  begin
+    Result := true;
+  end;
+  FreeAndNil(p);
+  FreeAndNil(d);
+  FreeAndNil(f);
+
+end;
+
+procedure TCAluno.ListarAlunoes(lista: TListView);
+var
+  d: TDAluno;
+begin
+  d := TDAluno.Create;
+  //d.ListarAluno(lista);
+end;
+
+function TCAluno.UpdateAluno(id: integer; nome: string; idade: integer;
+  sexo, cpf, cidade, bairro, endereco, cep, uf, numero, telefone, email: string;
+  user_tualizacao: integer): boolean;
+var
+  p: TAluno;
+  f: TFuncoes;
+  d: TDAluno;
+  dt_cadastro, dt_atualizacao: tdate;
+begin
+  Result := false;
+  p := TAluno.Create;
+  f := TFuncoes.Create;
+  p.id := id;
+  p.nome := nome;
+  p.idade := idade;
+  p.sexo := sexo;
+  p.cpf := cpf;
+  p.cidade := cidade;
+  p.bairro := bairro;
+  p.endereco := endereco;
+  p.CEP:=cep;
+  p.uf := uf;
+  p.numero := numero;
+  p.telefone := telefone;
+  p.email := email;
+
+  p.useratualizacao := user_tualizacao;
+  p.datacadastro := f.RetornaDataHoraBanco;
+  p.dataatualizacao := f.RetornaDataHoraBanco;
+
+  d:=TDAluno.Create;
+  if d.AlteraAluno(p) then
+  begin
+    Result:=true;
+  end;
+    // chama funcao de cadastrar no DAO
+
+    FreeAndNil(p);
+  FreeAndNil(d);
+  FreeAndNil(f);
+end;
+
+end.

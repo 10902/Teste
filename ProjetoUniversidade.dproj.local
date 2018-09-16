@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2018/08/13 20:39:25.000.704,=C:\Users\Vitoria PC\Desktop\Projeto Fortes Tecnologia\Unit1.pas</Transaction>
+    <Transaction>2018/08/13 20:39:36.000.848,C:\Users\Vitoria PC\Desktop\Projeto Fortes Tecnologia\VIEW\frm_principal.pas=C:\Users\Vitoria PC\Desktop\Projeto Fortes Tecnologia\Unit1.pas</Transaction>
+    <Transaction>2018/08/13 20:39:36.000.848,C:\Users\Vitoria PC\Desktop\Projeto Fortes Tecnologia\VIEW\frm_principal.dfm=C:\Users\Vitoria PC\Desktop\Projeto Fortes Tecnologia\Unit1.dfm</Transaction>
+    <Transaction>2018/08/13 20:44:18.000.478,=C:\Users\Vitoria PC\Desktop\Projeto Fortes Tecnologia\Unit1.pas</Transaction>
+    <Transaction>2018/08/13 20:45:00.000.061,C:\Users\Vitoria PC\Desktop\Projeto Fortes Tecnologia\VIEW\data_module.dfm=C:\Users\Vitoria PC\Desktop\Projeto Fortes Tecnologia\Unit1.dfm</Transaction>
+    <Transaction>2018/08/13 20:45:00.000.061,C:\Users\Vitoria PC\Desktop\Projeto Fortes Tecnologia\VIEW\data_module.pas=C:\Users\Vitoria PC\Desktop\Projeto Fortes Tecnologia\Unit1.pas</Transaction>
+    <Transaction>2018/08/13 20:46:35.000.083,C:\Users\Vitoria PC\Desktop\Projeto Fortes Tecnologia\ProjetoUniversidade.dproj=C:\Users\Vitoria PC\Desktop\Projeto Fortes Tecnologia\ProjetoUniversidade.dproj</Transaction>
+    <Transaction>2018/08/13 21:11:39.000.046,=C:\Users\Vitoria PC\Desktop\Projeto Fortes Tecnologia\Unit2.pas</Transaction>
+    <Transaction>2018/08/13 21:15:39.000.232,C:\Users\Vitoria PC\Desktop\Projeto Fortes Tecnologia\Unit2.dfm=C:\Users\Vitoria PC\Desktop\Projeto Fortes Tecnologia\VIEW\frm_cadastro_professor.dfm</Transaction>
+    <Transaction>2018/08/13 21:15:39.000.232,C:\Users\Vitoria PC\Desktop\Projeto Fortes Tecnologia\Unit2.pas=C:\Users\Vitoria PC\Desktop\Projeto Fortes Tecnologia\VIEW\frm_cadastro_professor.pas</Transaction>
+    <Transaction>2018/08/14 12:25:12.000.014,=C:\Users\Vitoria PC\Desktop\Projeto Fortes Tecnologia\Unit2.pas</Transaction>
+    <Transaction>2018/08/14 12:25:44.000.362,C:\Users\Vitoria PC\Desktop\Projeto Fortes Tecnologia\VIEW\frm_cadastro_aluno.dfm=C:\Users\Vitoria PC\Desktop\Projeto Fortes Tecnologia\Unit2.dfm</Transaction>
+    <Transaction>2018/08/14 12:25:44.000.362,C:\Users\Vitoria PC\Desktop\Projeto Fortes Tecnologia\VIEW\frm_cadastro_aluno.pas=C:\Users\Vitoria PC\Desktop\Projeto Fortes Tecnologia\Unit2.pas</Transaction>
+    <Transaction>2018/08/15 19:07:56.000.503,=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\Unit1.pas</Transaction>
+    <Transaction>2018/08/15 19:08:10.000.672,C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\DAO\DDisciplina.pas=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\Unit1.pas</Transaction>
+    <Transaction>2018/08/15 19:16:23.000.279,=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\Unit1.pas</Transaction>
+    <Transaction>2018/08/15 19:25:40.000.466,=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\Unit1.pas</Transaction>
+    <Transaction>2018/08/15 19:26:02.000.001,C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\VIEW\frm_cadastro_disciplina.dfm=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\Unit1.dfm</Transaction>
+    <Transaction>2018/08/15 19:26:02.000.001,C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\VIEW\frm_cadastro_disciplina.pas=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\Unit1.pas</Transaction>
+    <Transaction>2018/08/15 21:14:50.000.373,=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\Unit1.pas</Transaction>
+    <Transaction>2018/08/15 21:15:15.000.271,C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\VIEW\frm_vincula_professor_disciplina.pas=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\Unit1.pas</Transaction>
+    <Transaction>2018/08/15 21:15:15.000.271,C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\VIEW\frm_vincula_professor_disciplina.dfm=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\Unit1.dfm</Transaction>
+    <Transaction>2018/08/16 12:17:47.000.894,=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\Unit1.pas</Transaction>
+    <Transaction>2018/08/16 12:19:06.000.678,C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\Unit1.pas=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\VIEW\frm_vincula_disciplina_aluno.pas</Transaction>
+    <Transaction>2018/08/16 12:19:06.000.678,C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\Unit1.dfm=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\VIEW\frm_vincula_disciplina_aluno.dfm</Transaction>
+    <Transaction>2018/08/16 21:46:43.000.959,=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\Unit1.pas</Transaction>
+    <Transaction>2018/08/16 21:46:58.000.275,C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\VIEW\frm_notas.pas=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\Unit1.pas</Transaction>
+    <Transaction>2018/08/16 21:46:58.000.275,C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\VIEW\frm_notas.dfm=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\Unit1.dfm</Transaction>
+    <Transaction>2018/08/17 12:59:59.000.041,=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\Unit1.pas</Transaction>
+    <Transaction>2018/08/17 13:00:17.000.038,C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\Unit1.pas=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\VIEW\frm_relatorio_notas.pas</Transaction>
+    <Transaction>2018/08/17 13:00:17.000.038,C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\Unit1.dfm=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\VIEW\frm_relatorio_notas.dfm</Transaction>
+    <Transaction>2018/08/17 14:07:54.000.677,C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\VIEW\frm_relatorio_notas.pas=</Transaction>
+    <Transaction>2018/08/17 20:11:56.000.383,=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\Unit1.pas</Transaction>
+    <Transaction>2018/08/17 20:12:25.000.601,C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\Unit1.dfm=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\VIEW\frm_relatorio_notas.dfm</Transaction>
+    <Transaction>2018/08/17 20:12:25.000.601,C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\Unit1.pas=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\VIEW\frm_relatorio_notas.pas</Transaction>
+    <Transaction>2018/08/17 22:34:08.000.651,=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\Unit1.pas</Transaction>
+    <Transaction>2018/08/17 22:35:05.000.971,C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\VIEW\frm_relatorio_alunos_professor.pas=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\Unit1.pas</Transaction>
+    <Transaction>2018/08/17 22:35:05.000.971,C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\VIEW\frm_relatorio_alunos_professor.dfm=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\Unit1.dfm</Transaction>
+    <Transaction>2018/08/17 23:10:09.000.364,=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\Unit1.pas</Transaction>
+    <Transaction>2018/08/17 23:10:37.000.570,C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\VIEW\frm_tipo_aprovacao.pas=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\Unit1.pas</Transaction>
+    <Transaction>2018/08/17 23:10:37.000.570,C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\VIEW\frm_tipo_aprovacao.dfm=C:\Users\jfsof\OneDrive\Desktop\FORTES\Projeto Fortes Tecnologia\Unit1.dfm</Transaction>
+  </Transactions>
+</BorlandProject>
