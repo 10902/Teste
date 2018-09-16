@@ -52,7 +52,6 @@ end;
 
 procedure TPessoa.Setnome(const Value: string);
 begin
-// nome da pessoa
   Fnome := Value;
 end;
 

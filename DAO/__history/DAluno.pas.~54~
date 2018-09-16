@@ -21,7 +21,10 @@ type
     function CadastraAluno(a: TAluno): boolean;
     function AlteraAluno(a: TAluno): boolean;
     procedure ListarAluno(lista: TListView);
-    function Ativar_inativarProfessoa(a: TAluno): boolean;
+    function Ativar_inativarAluno(a: TAluno): boolean;
+    function VinculaDisciplinas(p: TAluno; disciplina: integer): boolean;
+    function DesvincularDisciplina(p: TAluno; disciplina: integer): boolean;
+    procedure ListarDisciplinas(aluno: integer; lista: TListView);
 
   published
     { published declarations }
@@ -61,7 +64,7 @@ begin
         DT.Sql_Aluno.ParamByName('idade').AsInteger := a.idade;
         DT.Sql_Aluno.ParamByName('sexo').AsString := a.sexo;
         DT.Sql_Aluno.ParamByName('cpf').AsString := a.CPF;
-        DT.Sql_Aluno.ParamByName('matricula').AsString := a.CPF;
+        DT.Sql_Aluno.ParamByName('matricula').AsString := a.matricula;
         DT.Sql_Aluno.ParamByName('cidade').AsString := a.CIDADE;
         DT.Sql_Aluno.ParamByName('bairro').AsString := a.BAIRRO;
         DT.Sql_Aluno.ParamByName('endereco').AsString := a.ENDERECO;
@@ -98,7 +101,7 @@ begin
 
 end;
 
-function TDAluno.Ativar_inativarCliente(a: TAluno): boolean;
+function TDAluno.Ativar_inativarAluno(a: TAluno): boolean;
 var
 
   DT: TDM;
@@ -246,6 +249,57 @@ begin
 
 end;
 
+function TDAluno.DesvincularDisciplina(p: TAluno; disciplina: integer): boolean;
+var
+  DT: TDM;
+
+begin
+  Result := false;
+
+  TRY
+    DT := TDM.Create(nil);
+    try
+      begin
+
+        DT.TFconexao.Connected := TRUE;
+
+        DT.Sql_Aluno.Close;
+        DT.Sql_Aluno.SQL.Clear;
+
+        DT.Sql_Aluno.SQL.Add
+          ('update tb_aluno_disciplina set status=:status,dt_atualizacao=:dt_atualizacao,user_atualizacao=:user_atualizacao where aluno=:aluno and disciplina=:disciplina');
+
+        DT.Sql_Aluno.ParamByName('aluno').AsInteger := p.id;
+        DT.Sql_Aluno.ParamByName('disciplina').AsInteger := disciplina;
+        DT.Sql_Aluno.ParamByName('status').AsInteger := p.status;
+
+        DT.Sql_Aluno.ParamByName('dt_atualizacao').AsDateTime :=
+          p.dataatualizacao;
+        DT.Sql_Aluno.ParamByName('user_atualizacao').AsInteger :=
+          p.useratualizacao;
+
+        DT.Sql_Aluno.ExecSQL;
+
+        Result := TRUE;
+
+      end;
+    except
+      on E: Exception do
+      begin
+
+        ShowMessage('Erro ao tentar desvincular disciplina : ' + E.Message);
+
+      end;
+
+    end;
+
+  FINALLY
+    // LIBERANDO O OBJETO DA MEMÓRIA
+    FreeAndNil(DT);
+  END;
+
+end;
+
 procedure TDAluno.ListarAluno(lista: TListView);
 var
   DT: TDM;
@@ -323,7 +377,132 @@ begin
 
   FINALLY
     // LIBERANDO O OBJETO DA MEMÓRIA
-    // FreeAndNil(DT);
+    FreeAndNil(DT);
+  END;
+
+end;
+
+procedure TDAluno.ListarDisciplinas(aluno: integer; lista: TListView);
+var
+  DT: TDM;
+  l: TListItem;
+
+begin
+
+  TRY
+    DT := TDM.Create(nil);
+
+    try
+      begin
+
+        DT.TFconexao.Connected := TRUE;
+
+        DT.Sql_Aluno.Close;
+        DT.Sql_Aluno.SQL.Clear;
+
+        DT.Sql_Aluno.SQL.Add
+          ('select disciplina,descricao from v_aluno_disciplina where aluno=:aluno and status=1');
+        DT.Sql_Aluno.ParamByName('aluno').AsInteger := aluno;
+        DT.Sql_Aluno.open;
+        lista.Items.Clear;
+        if not(DT.Sql_Aluno.IsEmpty) then
+        begin
+
+          DT.Sql_Aluno.First;
+          lista.Items.Clear;
+          while not(DT.Sql_Aluno.Eof) do
+          begin
+
+            l := lista.Items.Add;
+            l.Caption := IntToStr(DT.Sql_Aluno.fieldByName('disciplina').Value);
+            l.SubItems.Add(DT.Sql_Aluno.fieldByName('descricao').AsString);
+
+            DT.Sql_Aluno.Next;;
+
+          end;
+        end
+
+      end;
+    except
+      on E: Exception do
+      begin
+
+        ShowMessage('Erro ao listar Disciplinas : ' + E.Message);
+
+      end;
+
+    end;
+
+  FINALLY
+    // LIBERANDO O OBJETO DA MEMÓRIA
+    FreeAndNil(DT);
+  END;
+end;
+
+function TDAluno.VinculaDisciplinas(p: TAluno; disciplina: integer): boolean;
+var
+  DT: TDM;
+
+begin
+  Result := false;
+
+  TRY
+    DT := TDM.Create(nil);
+    try
+      begin
+
+        DT.TFconexao.Connected := TRUE;
+
+        DT.Sql_Aluno.Close;
+        DT.Sql_Aluno.SQL.Clear;
+
+        DT.Sql_Aluno.SQL.Add
+          ('select descricao from v_aluno_disciplina where aluno=:aluno and disciplina =:disciplina and status=1');
+        DT.Sql_Aluno.ParamByName('aluno').AsInteger := p.id;
+        DT.Sql_Aluno.ParamByName('disciplina').AsInteger := disciplina;
+        DT.Sql_Aluno.open;
+        if not(DT.Sql_Aluno.IsEmpty) then
+        begin
+          ShowMessage('Essa disciplina já está vinculada para este aluno !');
+        end
+        else
+        begin // se não estiver vinculada ainda, vamos vincular
+
+          DT.Sql_Aluno.Close;
+          DT.Sql_Aluno.SQL.Clear;
+
+          DT.Sql_Aluno.SQL.Add
+            ('insert into tb_aluno_disciplina (aluno,disciplina,dt_cadastro,dt_atualizacao,user_atualizacao) ');
+          DT.Sql_Aluno.SQL.Add
+            ('values (:aluno,:disciplina,:dt_cadastro,:dt_atualizacao,:user_atualizacao)');
+          DT.Sql_Aluno.ParamByName('aluno').AsInteger := p.id;
+          DT.Sql_Aluno.ParamByName('disciplina').AsInteger := disciplina;
+
+          DT.Sql_Aluno.ParamByName('dt_cadastro').AsDateTime := p.datacadastro;
+          DT.Sql_Aluno.ParamByName('dt_atualizacao').AsDateTime :=
+            p.dataatualizacao;
+          DT.Sql_Aluno.ParamByName('user_atualizacao').AsInteger :=
+            p.useratualizacao;
+
+          DT.Sql_Aluno.ExecSQL;
+
+          Result := TRUE;
+
+        end;
+      end;
+    except
+      on E: Exception do
+      begin
+
+        ShowMessage('Erro ao vincular disciplina : ' + E.Message);
+
+      end;
+
+    end;
+
+  FINALLY
+    // LIBERANDO O OBJETO DA MEMÓRIA
+    FreeAndNil(DT);
   END;
 
 end;
